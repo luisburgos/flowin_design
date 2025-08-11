@@ -1,4 +1,5 @@
 /// Flowin Design Flutter Package
 library;
 
-export 'src/flowin_design.dart';
+export 'src/components/components.dart';
+export 'src/foundations/foundations.dart';
