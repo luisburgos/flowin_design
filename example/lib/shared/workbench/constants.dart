@@ -1,3 +1,4 @@
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -29,8 +30,8 @@ final wbDefaultBorderRadius = BorderRadius.circular(8);
 
 /// @no-doc
 const wbPanePadding = EdgeInsets.symmetric(
-  vertical: wbPaneVerticalPadding,
-  horizontal: wbPaneHorizontalPadding,
+  vertical: FlowinDesignSpace.space100,
+  horizontal: FlowinDesignSpace.space400,
 );
 
 /// @no-doc
@@ -39,9 +40,7 @@ const wbDefaultSideBarPadding = EdgeInsets.all(12);
 /// @no-doc
 final ButtonStyle wbSmallButtonStyle = IconButton.styleFrom(
   iconSize: 14,
-  shape: RoundedRectangleBorder(
-    borderRadius: wbDefaultBorderRadius,
-  ),
+  shape: RoundedRectangleBorder(borderRadius: wbDefaultBorderRadius),
   padding: const EdgeInsets.all(4),
   fixedSize: const Size(28, 28),
 );
@@ -49,9 +48,7 @@ final ButtonStyle wbSmallButtonStyle = IconButton.styleFrom(
 /// @no-doc
 final ButtonStyle wbMediumButtonStyle = IconButton.styleFrom(
   iconSize: 20,
-  shape: RoundedRectangleBorder(
-    borderRadius: wbDefaultBorderRadius,
-  ),
+  shape: RoundedRectangleBorder(borderRadius: wbDefaultBorderRadius),
   padding: const EdgeInsets.all(4),
   fixedSize: const Size(40, 40),
 );
@@ -76,23 +73,15 @@ ButtonStyle segmentedButtonStyle(ColorScheme colorScheme) {
       notSelected: BorderSide(color: colorScheme.surfaceContainer, width: 0.8),
     ),
     shape: WidgetStateProperty.all(
-      RoundedRectangleBorder(
-        borderRadius: wbDefaultBorderRadius,
-      ),
+      RoundedRectangleBorder(borderRadius: wbDefaultBorderRadius),
     ),
     padding: WidgetStateProperty.all(
-      const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 8,
-      ),
+      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
     ),
   );
 }
 
-WidgetStateProperty<T?> _resolve<T>({
-  T? selected,
-  T? notSelected,
-}) {
+WidgetStateProperty<T?> _resolve<T>({T? selected, T? notSelected}) {
   return WidgetStateProperty.resolveWith<T?>(
     (states) => states.contains(WidgetState.selected) ? selected : notSelected,
   );

@@ -162,7 +162,7 @@ class _ChipPageViewState extends State<ChipPageView> {
             itemBuilder: (context, i) {
               final page = widget.items[i].builder(context);
               if (!widget.keepPagesAlive) return page;
-              return _KeepAlive(child: page, key: PageStorageKey('cpv_$i'));
+              return _KeepAlive(key: PageStorageKey('cpv_$i'), child: page);
             },
           ),
         ),

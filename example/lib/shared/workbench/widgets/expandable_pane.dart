@@ -1,4 +1,5 @@
 import 'package:example/shared/workbench/constants.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -210,7 +211,7 @@ class _ExpandedContent extends StatelessWidget {
             ],
           ),
         ),
-        const Divider(height: 1),
+        const FdDivider(),
         Expanded(child: child),
       ],
     );

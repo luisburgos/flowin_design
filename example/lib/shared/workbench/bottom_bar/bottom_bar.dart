@@ -1,4 +1,5 @@
-import 'package:example/shared/workbench/constants.dart';
+import 'package:example/shared/easy_version/easy_app_version.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -11,15 +12,15 @@ class WorkbenchBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: wbPanePadding,
-          color: Theme.of(context).colorScheme.surface,
-          height: wbBottomBarHeight,
-          width: width,
-        ),
-      ],
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: FlowinDesignSpace.space100,
+        horizontal: FlowinDesignSpace.space400,
+      ),
+      color: Theme.of(context).colorScheme.surface,
+      height: FlowinDesignSpace.space800,
+      width: width,
+      child: Row(children: [Spacer(), EasyAppVersion()]),
     );
   }
 }

@@ -4,5 +4,6 @@ export 'buttons/fd_button_size.dart';
 export 'buttons/fd_button_variant.dart';
 export 'buttons/fd_icon_button.dart';
 export 'buttons/fd_item_button.dart';
+export 'dividers/fd_divider.dart';
 export 'tabs/fd_tab_item.dart';
 export 'tabs/fd_tabs.dart';

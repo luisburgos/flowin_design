@@ -14,6 +14,7 @@ import 'package:example/shared/workbench/top_bar/top_bar.dart';
 import 'package:example/shared/workbench/top_bar/top_bar_title.dart';
 import 'package:example/shared/workbench/widgets/expandable_pane.dart';
 import 'package:example/shared/workbench/workbench_layout.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -48,7 +49,7 @@ class WorkbenchView extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
-    final bodyHeight = height - wbTopBarMinHeight - wbBottomBarHeight - 4;
+    final bodyHeight = height;
 
     final effectiveSidebarItem =
         state.sidebarItem ?? WorkbenchSideBarItem.components;
@@ -89,7 +90,7 @@ class WorkbenchView extends StatelessWidget {
               isExpanded: state.visiblePanes.contains(WorkbenchPane.sideBar),
               icon: const Icon(LucideIcons.chevronRight),
               closeIcon: LucideIcons.chevronLeft,
-              rightDivider: const VerticalDivider(),
+              rightDivider: const FdVerticalDivider(),
               height: bodyHeight,
               expandedWidth: 60,
               onOpenPressed: () {
@@ -117,7 +118,7 @@ class WorkbenchView extends StatelessWidget {
                 isExpanded: showModulePane,
                 icon: const Icon(LucideIcons.panelLeft),
                 leftDivider: const SizedBox.shrink(),
-                rightDivider: const VerticalDivider(),
+                rightDivider: const FdVerticalDivider(),
                 height: bodyHeight,
                 expandedWidth: 220,
                 onOpenPressed: () => context.read<WorkbenchBloc>().add(
@@ -137,7 +138,7 @@ class WorkbenchView extends StatelessWidget {
                 isExpanded: showPropertyPane,
                 icon: const Icon(LucideIcons.panelRight),
                 height: bodyHeight,
-                leftDivider: const VerticalDivider(),
+                leftDivider: const FdVerticalDivider(),
                 expandedWidth: 220,
                 onOpenPressed: () => context.read<WorkbenchBloc>().add(
                   OpenPane(WorkbenchPane.right),
@@ -150,7 +151,7 @@ class WorkbenchView extends StatelessWidget {
               agentChatPane: ExpandablePane(
                 name: 'Agent/Chat',
                 isExpanded: showAgentChatPane,
-                leftDivider: const VerticalDivider(),
+                leftDivider: const FdVerticalDivider(),
                 icon: const Icon(LucideIcons.sparkles),
                 height: bodyHeight,
                 expandedWidth: 300,

@@ -1,3 +1,4 @@
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -29,7 +30,7 @@ class WorkbenchLayout extends StatelessWidget {
       body: Column(
         children: [
           topBar,
-          const Divider(),
+          const FdDivider(),
           Expanded(
             child: Row(
               children: [
@@ -38,7 +39,7 @@ class WorkbenchLayout extends StatelessWidget {
               ],
             ),
           ),
-          const Divider(),
+          const FdDivider(),
           bottomBar,
         ],
       ),
