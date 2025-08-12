@@ -49,5 +49,8 @@ extension FlowinBrandTextTheme on TextTheme {
   TextStyle get brandTitleMedium => FlowinBrandTextTokens.titleMedium;
 
   /// @no-doc
+  TextStyle get brandTitleSmall => FlowinBrandTextTokens.titleSmall;
+
+  /// @no-doc
   TextStyle get brandBodyLarge => FlowinBrandTextTokens.bodyLarge;
 }

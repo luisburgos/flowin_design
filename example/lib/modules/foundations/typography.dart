@@ -1,3 +1,5 @@
+import 'package:example/modules/foundations/widgets/typefaces_samples.dart';
+import 'package:example/shared/workbench/body/body_card.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -7,13 +9,6 @@ class ThemeTypographyBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Typography',
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
-    );
+    return BodyCard(child: TypefacesSamples());
   }
 }

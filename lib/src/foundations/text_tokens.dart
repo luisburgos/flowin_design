@@ -6,83 +6,91 @@ import 'package:google_fonts/google_fonts.dart';
 class FlowinBaselineTextTokens {
   /// @no-doc
   static TextStyle get headlineSmall => GoogleFonts.inter(
-        fontSize: 24,
-        fontWeight: FontWeight.w600, // Semi Bold
-        height: 32 / 24,
-        letterSpacing: -0.5,
-      );
+    fontSize: 24,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 32 / 24,
+    letterSpacing: -0.5,
+  );
+
+  /// @no-doc
+  static TextStyle get titleLarge => GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 24 / 20,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get titleMedium => GoogleFonts.inter(
-        fontSize: 16,
-        fontWeight: FontWeight.w600, // Semi Bold
-        height: 24 / 16,
-        letterSpacing: 0,
-      );
+    fontSize: 16,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 22 / 16,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get titleSmall => GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w600, // Semi Bold
-        height: 22 / 14,
-        letterSpacing: 0,
-      );
+    fontSize: 14,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 20 / 14,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get bodyLarge => GoogleFonts.inter(
-        fontSize: 16,
-        fontWeight: FontWeight.w400, // Regular
-        height: 24 / 16,
-        letterSpacing: 0,
-      );
+    fontSize: 16,
+    fontWeight: FontWeight.w400, // Regular
+    height: 24 / 16,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get bodyMedium => GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w400, // Regular
-        height: 22 / 14,
-        letterSpacing: 0,
-      );
+    fontSize: 14,
+    fontWeight: FontWeight.w400, // Regular
+    height: 22 / 14,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get labelLarge => GoogleFonts.inter(
-        fontSize: 16,
-        fontWeight: FontWeight.w600, // Semi Bold
-        height: 16 / 16,
-        letterSpacing: 0,
-      );
+    fontSize: 16,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 16 / 16,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get labelMedium => GoogleFonts.inter(
-        fontSize: 14,
-        fontWeight: FontWeight.w600, // Semi Bold
-        height: 14 / 14,
-        letterSpacing: 0,
-      );
+    fontSize: 14,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 14 / 14,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get labelSmall => GoogleFonts.inter(
-        fontSize: 12,
-        fontWeight: FontWeight.w600, // Semi Bold
-        height: 12 / 12,
-        letterSpacing: 0.5,
-      );
+    fontSize: 12,
+    fontWeight: FontWeight.w600, // Semi Bold
+    height: 12 / 12,
+    letterSpacing: 0.5,
+  );
 
   /// @no-doc
   static TextStyle get captionLarge => GoogleFonts.inter(
-        fontSize: 12,
-        fontWeight: FontWeight.w500, // Medium
-        height: 20 / 12,
-        letterSpacing: 0,
-      );
+    fontSize: 12,
+    fontWeight: FontWeight.w500, // Medium
+    height: 20 / 12,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get captionMedium => GoogleFonts.inter(
-        fontSize: 10,
-        fontWeight: FontWeight.w400, // Regular
-        height: 16 / 10,
-        letterSpacing: 0.2,
-      );
+    fontSize: 10,
+    fontWeight: FontWeight.w400, // Regular
+    height: 16 / 10,
+    letterSpacing: 0.2,
+  );
 }
 
 /// @no-doc
@@ -93,55 +101,64 @@ const supremeFontFamily = 'Supreme';
 class FlowinBrandTextTokens {
   /// @no-doc
   static TextStyle get displayXL => const TextStyle(
-        fontFamily: supremeFontFamily,
-        fontSize: 160,
-        fontWeight: FontWeight.w700,
-        height: 1,
-        letterSpacing: -2,
-      );
+    fontFamily: supremeFontFamily,
+    fontSize: 160,
+    fontWeight: FontWeight.w700, // Bold
+    height: 1,
+    letterSpacing: -2,
+  );
 
   /// @no-doc
   static TextStyle get displayLG => const TextStyle(
-        fontFamily: supremeFontFamily,
-        fontSize: 80,
-        fontWeight: FontWeight.w700,
-        height: 1,
-        letterSpacing: -1,
-      );
+    fontFamily: supremeFontFamily,
+    fontSize: 80,
+    fontWeight: FontWeight.w700, // Bold
+    height: 1,
+    letterSpacing: -1,
+  );
 
   /// @no-doc
   static TextStyle get headlineLarge => const TextStyle(
-        fontFamily: supremeFontFamily,
-        fontSize: 48,
-        fontWeight: FontWeight.w700,
-        height: 56 / 48,
-        letterSpacing: 0,
-      );
+    fontFamily: supremeFontFamily,
+    fontSize: 48,
+    fontWeight: FontWeight.w700, // Bold
+    height: 56 / 48,
+    letterSpacing: 0,
+  );
 
   /// @no-doc
   static TextStyle get headlineSmall => const TextStyle(
-        fontFamily: supremeFontFamily,
-        fontSize: 24,
-        fontWeight: FontWeight.w700,
-        height: 32 / 24,
-        letterSpacing: 0.2,
-      );
+    fontFamily: supremeFontFamily,
+    fontSize: 24,
+    fontWeight: FontWeight.w700, // Bold
+    height: 32 / 24,
+    letterSpacing: 0.2,
+  );
 
   /// @no-doc
   static TextStyle get titleMedium => const TextStyle(
-        fontFamily: supremeFontFamily,
-        fontSize: 16,
-        fontWeight: FontWeight.w700,
-        height: 24 / 16,
-        letterSpacing: 0.2,
-      );
+    fontFamily: supremeFontFamily,
+    fontSize: 16,
+    fontWeight: FontWeight.w700, // Bold
+    height: 24 / 16,
+    letterSpacing: 0.2,
+  );
+
+  /// @no-doc
+  static TextStyle get titleSmall => const TextStyle(
+    fontFamily: supremeFontFamily,
+    fontSize: 14,
+    fontWeight: FontWeight.w700, // Bold
+    height: 20 / 14,
+    letterSpacing: 0.2,
+  );
 
   /// @no-doc
   static TextStyle get bodyLarge => const TextStyle(
-        fontFamily: supremeFontFamily,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        height: 24 / 16,
-        letterSpacing: 0.5,
-      );
+    fontFamily: supremeFontFamily,
+    fontSize: 16,
+    fontWeight: FontWeight.w500, // Medium
+    height: 24 / 16,
+    letterSpacing: 0.5,
+  );
 }
