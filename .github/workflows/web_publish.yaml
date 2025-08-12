@@ -1,0 +1,44 @@
+name: Publish to GitHub Pages
+
+env:
+  FLUTTER_VERSION: '3.32.8'
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Flutter SDK
+        uses: actions/cache@v3
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+
+      - name: Cache pub packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - run: flutter pub upgrade --major-versions
+      - run: flutter pub get
+
+      - uses: bluefireteam/flutter-gh-pages@v9
+        with:
+          workingDir: example
+          baseHref: /flowin_design/
+          customArgs: '--no-tree-shake-icons --target lib/main.dart'
