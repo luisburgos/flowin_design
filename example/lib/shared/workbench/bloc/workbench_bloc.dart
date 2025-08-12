@@ -35,12 +35,17 @@ class WorkbenchBloc extends Bloc<WorkbenchEvent, WorkbenchState> {
     });
 
     on<SetSidebarItem>((e, emit) {
+      final updatedVisiblePanes = state.visiblePanes;
+      if (e.expandsLeftPane) {
+        if (!updatedVisiblePanes.contains(WorkbenchPane.left)) {
+          updatedVisiblePanes.add(WorkbenchPane.left);
+        }
+      }
+
       emit(
         state.copyWith(
           sidebarItem: e.item,
-          visiblePanes: state.visiblePanes.isEmpty
-              ? {WorkbenchPane.left}
-              : state.visiblePanes,
+          visiblePanes: updatedVisiblePanes,
           selectedFoundationsOption: () => null,
         ),
       );

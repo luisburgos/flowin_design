@@ -36,19 +36,19 @@ class MinimizePane extends WorkbenchEvent {
 /// @no-doc
 class SetSidebarItem extends WorkbenchEvent {
   /// @no-doc
-  SetSidebarItem(this.item);
+  SetSidebarItem(this.item, {this.expandsLeftPane = true});
 
   /// @no-doc
   final WorkbenchSideBarItem item;
+
+  /// @no-doc
+  final bool expandsLeftPane;
 }
 
 /// @no-doc
 class SetFoundationsPaneOption extends WorkbenchEvent {
   /// @no-doc
-  SetFoundationsPaneOption({
-    required this.item,
-    this.pane,
-  });
+  SetFoundationsPaneOption({required this.item, this.pane});
 
   /// @no-doc
   final WorkbenchSideBarItem? pane;
@@ -60,9 +60,7 @@ class SetFoundationsPaneOption extends WorkbenchEvent {
 /// @no-doc
 class SetComponentsPaneOption extends WorkbenchEvent {
   /// @no-doc
-  SetComponentsPaneOption({
-    this.option,
-  });
+  SetComponentsPaneOption({this.option});
 
   /// @no-doc
   final ComponentsPaneOption? option;
