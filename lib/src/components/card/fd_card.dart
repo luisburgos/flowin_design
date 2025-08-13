@@ -12,6 +12,7 @@ class FDCard extends StatelessWidget {
     this.size,
     this.backgroundColor,
     this.cornerSmoothing,
+    this.margin,
     this.padding,
     this.shadows,
     super.key,
@@ -31,6 +32,9 @@ class FDCard extends StatelessWidget {
 
   /// @no-doc
   final double? cornerSmoothing;
+
+  /// @no-doc
+  final EdgeInsets? margin;
 
   /// @no-doc
   final EdgeInsets? padding;
@@ -55,6 +59,7 @@ class FDCard extends StatelessWidget {
     return Container(
       width: size?.width,
       height: size?.height,
+      margin: margin,
       padding: padding,
       decoration: ShapeDecoration(
         shape: SmoothRectangleBorder(

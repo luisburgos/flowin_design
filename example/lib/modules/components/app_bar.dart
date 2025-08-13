@@ -3,9 +3,9 @@ import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
-class AppBarComponentBody extends StatelessWidget {
+class AppBarComponentShowcase extends StatelessWidget {
   /// @no-doc
-  const AppBarComponentBody({super.key});
+  const AppBarComponentShowcase({super.key});
 
   @override
   Widget build(BuildContext context) {

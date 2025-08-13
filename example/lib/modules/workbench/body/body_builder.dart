@@ -46,15 +46,15 @@ class BodyBuilder extends StatelessWidget {
         case null:
           break;
         case ComponentsPaneOption.buttons:
-          return const WidgetTreeButtonsBody();
+          return const ButtonsComponentShowcase();
         case ComponentsPaneOption.iconButtons:
-          return const WidgetTreeIconButtonsBody();
+          return const IconButtonsComponentShowcase();
         case ComponentsPaneOption.itemButtons:
-          return const WidgetTreeItemButtonsBody();
+          return const ItemButtonsComponentShowcase();
         case ComponentsPaneOption.tabs:
-          return const WidgetTreeTabsBody();
+          return const TabsComponentShowcase();
         case ComponentsPaneOption.appBar:
-          return const AppBarComponentBody();
+          return const AppBarComponentShowcase();
         case ComponentsPaneOption.chip:
           return const ChipsComponentShowcase();
         case ComponentsPaneOption.chipGroup:

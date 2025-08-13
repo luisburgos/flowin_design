@@ -3,15 +3,15 @@ import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
-class WidgetTreeTabsBody extends StatefulWidget {
+class TabsComponentShowcase extends StatefulWidget {
   /// @no-doc
-  const WidgetTreeTabsBody({super.key});
+  const TabsComponentShowcase({super.key});
 
   @override
-  State<WidgetTreeTabsBody> createState() => _WidgetTreeTabsBodyState();
+  State<TabsComponentShowcase> createState() => _TabsComponentShowcaseState();
 }
 
-class _WidgetTreeTabsBodyState extends State<WidgetTreeTabsBody>
+class _TabsComponentShowcaseState extends State<TabsComponentShowcase>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {

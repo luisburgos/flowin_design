@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 /// @no-doc
 class ShowcaseCard extends StatelessWidget {
   /// @no-doc
-  const ShowcaseCard({required this.child, this.padding, super.key});
+  const ShowcaseCard({
+    required this.child,
+    this.padding,
+    this.margin,
+    super.key,
+  });
 
   /// @no-doc
   final Widget child;
@@ -12,9 +17,13 @@ class ShowcaseCard extends StatelessWidget {
   /// @no-doc
   final EdgeInsets? padding;
 
+  /// @no-doc
+  final EdgeInsets? margin;
+
   @override
   Widget build(BuildContext context) {
     return FDCard(
+      margin: margin ?? const EdgeInsets.all(FlowinDesignSpace.space600),
       padding: padding ?? const EdgeInsets.all(FlowinDesignSpace.space600),
       shadows: [
         BoxShadow(

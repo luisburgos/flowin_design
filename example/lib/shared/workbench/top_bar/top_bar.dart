@@ -1,6 +1,6 @@
 import 'package:example/shared/workbench/constants.dart';
 import 'package:example/shared/workbench/domain.dart';
-import 'package:example/shared/workbench/widgets/widgets.dart';
+import 'package:example/shared/workbench/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc

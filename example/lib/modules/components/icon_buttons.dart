@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 /// @no-doc
-class WidgetTreeIconButtonsBody extends StatelessWidget {
+class IconButtonsComponentShowcase extends StatelessWidget {
   /// @no-doc
-  const WidgetTreeIconButtonsBody({super.key});
+  const IconButtonsComponentShowcase({super.key});
 
   @override
   Widget build(BuildContext context) {
