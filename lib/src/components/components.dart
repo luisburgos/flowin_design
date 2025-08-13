@@ -6,6 +6,7 @@ export 'buttons/fd_button_variant.dart';
 export 'buttons/fd_icon_button.dart';
 export 'buttons/fd_item_button.dart';
 export 'chip/fd_chip.dart';
+export 'chip/fd_chip_group.dart';
 export 'dividers/fd_divider.dart';
 export 'tabs/fd_tab_item.dart';
 export 'tabs/fd_tabs.dart';

@@ -14,6 +14,9 @@ enum ComponentsPaneOption {
   chip,
 
   /// @no-doc
+  chipGroup,
+
+  /// @no-doc
   iconButtons,
 
   /// @no-doc
@@ -37,6 +40,8 @@ enum ComponentsPaneOption {
         return 'tabs';
       case ComponentsPaneOption.chip:
         return 'chip';
+      case ComponentsPaneOption.chipGroup:
+        return 'chipGroup';
     }
   }
 
@@ -46,6 +51,7 @@ enum ComponentsPaneOption {
     if (id == 'appBar') return ComponentsPaneOption.appBar;
     if (id == 'tabs') return ComponentsPaneOption.tabs;
     if (id == 'chip') return ComponentsPaneOption.chip;
+    if (id == 'chipGroup') return ComponentsPaneOption.chipGroup;
     if (id == 'buttons') return ComponentsPaneOption.buttons;
     if (id == 'iconButtons') return ComponentsPaneOption.iconButtons;
     if (id == 'itemButtons') return ComponentsPaneOption.itemButtons;
@@ -70,6 +76,8 @@ enum ComponentsPaneOption {
         return 'Tabs';
       case ComponentsPaneOption.chip:
         return 'Chip';
+      case ComponentsPaneOption.chipGroup:
+        return 'Chip Group';
     }
   }
 
@@ -88,6 +96,8 @@ enum ComponentsPaneOption {
         return LucideIcons.notebookTabs;
       case ComponentsPaneOption.chip:
         return LucideIcons.tag;
+      case ComponentsPaneOption.chipGroup:
+        return LucideIcons.tags;
     }
   }
 }

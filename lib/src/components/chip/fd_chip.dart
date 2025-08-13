@@ -32,6 +32,7 @@ class FdChip extends StatelessWidget {
   /// @no-doc
   const FdChip({
     this.variant = FdChipVariant.unselected,
+    this.onTap,
     this.borderColor,
     this.backgroundColor,
     this.child,
@@ -47,6 +48,9 @@ class FdChip extends StatelessWidget {
 
   /// @no-doc
   final Widget? child;
+
+  /// @no-doc
+  final VoidCallback? onTap;
 
   /// @no-doc
   final Border? border;
@@ -87,18 +91,39 @@ class FdChip extends StatelessWidget {
           color: effectiveBorderColor,
         );
 
-    return Opacity(
-      opacity: variant.opacity,
-      child: Container(
-        constraints: constraints,
-        padding: padding ?? const EdgeInsets.all(FlowinDesignSpace.space400),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(FlowinDesignRadius.full),
-          color: effectiveBackgroundColor,
-          border: effectiveBorder,
+    return GestureDetector(
+      onTap: onTap,
+      child: Opacity(
+        opacity: variant.opacity,
+        child: Container(
+          constraints: constraints,
+          padding: padding ?? const EdgeInsets.all(FlowinDesignSpace.space400),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(FlowinDesignRadius.full),
+            color: effectiveBackgroundColor,
+            border: effectiveBorder,
+          ),
+          child: child,
         ),
-        child: child,
       ),
+    );
+  }
+
+  /// @no-doc
+  FdChip copyWith({
+    FdChipVariant? variant,
+    VoidCallback? onTap,
+  }) {
+    return FdChip(
+      variant: variant ?? this.variant,
+      onTap: onTap ?? this.onTap,
+      borderColor: borderColor,
+      backgroundColor: backgroundColor,
+      border: border,
+      constraints: constraints,
+      padding: padding,
+      margin: margin,
+      child: child,
     );
   }
 }
