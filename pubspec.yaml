@@ -8,6 +8,7 @@ environment:
   flutter: ^3.32.0
 
 dependencies:
+  figma_squircle: ^0.6.3
   flutter:
     sdk: flutter
   flutter_svg: ^2.2.0

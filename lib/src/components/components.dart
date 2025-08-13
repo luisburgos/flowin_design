@@ -5,6 +5,7 @@ export 'buttons/fd_button_size.dart';
 export 'buttons/fd_button_variant.dart';
 export 'buttons/fd_icon_button.dart';
 export 'buttons/fd_item_button.dart';
+export 'card/fd_card.dart';
 export 'chip/fd_chip.dart';
 export 'chip/fd_chip_group.dart';
 export 'chip/fd_chip_group_view_pager.dart';

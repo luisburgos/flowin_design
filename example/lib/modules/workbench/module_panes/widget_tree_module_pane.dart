@@ -23,6 +23,9 @@ enum ComponentsPaneOption {
   itemButtons,
 
   /// @no-doc
+  cards,
+
+  /// @no-doc
   buttons;
 
   /// @no-doc
@@ -42,6 +45,8 @@ enum ComponentsPaneOption {
         return 'chip';
       case ComponentsPaneOption.chipGroup:
         return 'chipGroup';
+      case ComponentsPaneOption.cards:
+        return 'cards';
     }
   }
 
@@ -55,6 +60,7 @@ enum ComponentsPaneOption {
     if (id == 'buttons') return ComponentsPaneOption.buttons;
     if (id == 'iconButtons') return ComponentsPaneOption.iconButtons;
     if (id == 'itemButtons') return ComponentsPaneOption.itemButtons;
+    if (id == 'cards') return ComponentsPaneOption.cards;
     throw Exception('Invalid WidgetTreeModulePaneOption id: $id');
   }
 
@@ -78,6 +84,8 @@ enum ComponentsPaneOption {
         return 'Chip';
       case ComponentsPaneOption.chipGroup:
         return 'Chip Group';
+      case ComponentsPaneOption.cards:
+        return 'Cards';
     }
   }
 
@@ -98,6 +106,8 @@ enum ComponentsPaneOption {
         return LucideIcons.tag;
       case ComponentsPaneOption.chipGroup:
         return LucideIcons.tags;
+      case ComponentsPaneOption.cards:
+        return LucideIcons.cardSim;
     }
   }
 }

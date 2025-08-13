@@ -1,4 +1,4 @@
-import 'package:example/shared/workbench/body/body_card.dart';
+import 'package:example/shared/workbench/presentation/widgets/showcase_card.dart';
 import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,7 @@ class ChipGroupsComponentShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme.labelSmall;
 
-    return BodyCard(
+    return ShowcaseCard(
       child: Column(
         spacing: FlowinDesignSpace.space400,
         mainAxisAlignment: MainAxisAlignment.center,

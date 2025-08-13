@@ -1,4 +1,4 @@
-import 'package:example/shared/workbench/body/body_card.dart';
+import 'package:example/shared/workbench/presentation/widgets/showcase_card.dart';
 import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class AppBarComponentBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BodyCard(
+    return ShowcaseCard(
       child: Column(
         spacing: FlowinDesignSpace.space400,
         mainAxisAlignment: MainAxisAlignment.center,

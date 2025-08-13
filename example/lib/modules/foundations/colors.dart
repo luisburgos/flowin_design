@@ -1,7 +1,7 @@
 import 'package:example/modules/foundations/widgets/color_scheme_grid_view.dart';
 import 'package:example/modules/foundations/widgets/color_scheme_mapper.dart';
 import 'package:example/shared/logger/logger.dart';
-import 'package:example/shared/workbench/body/body_card.dart';
+import 'package:example/shared/workbench/presentation/widgets/showcase_card.dart';
 import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,7 @@ class FoundationsColorsShowcase extends StatelessWidget {
         Logger.instance.info(
           'Getting cross axis count is $crossAxisCount for width $parentWidth',
         );
-        return BodyCard(
+        return ShowcaseCard(
           child: FDChipGroupViewPager(
             chipFactory: (context, label) => FdChip(
               child: Text(label, style: Theme.of(context).textTheme.labelSmall),
