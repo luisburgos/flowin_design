@@ -23,4 +23,7 @@ class FlowinDesignRadius {
 
   /// @no-doc
   static const radius800 = 32.0;
+
+  /// @no-doc
+  static const full = 9999.0;
 }

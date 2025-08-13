@@ -37,6 +37,9 @@ class FlowinDesignSpace {
   static const space1200 = 48.0;
 
   /// @no-doc
+  static const space1400 = 56.0;
+
+  /// @no-doc
   static const space1600 = 64.0;
 
   /// @no-doc
