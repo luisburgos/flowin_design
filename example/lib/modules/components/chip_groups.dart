@@ -17,6 +17,7 @@ class ChipGroupsComponentShowcase extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FdChipGroup(
+            isScrollable: false,
             chips: [
               FdChip(child: Text('Item A', style: textStyle)),
               FdChip(child: Text('Item B', style: textStyle)),
@@ -25,6 +26,7 @@ class ChipGroupsComponentShowcase extends StatelessWidget {
           ),
           FdChipGroup(
             unselectedVariant: FdChipVariant.unselectedDimmed,
+            isScrollable: false,
             chips: [
               FdChip(child: Text('Item A', style: textStyle)),
               FdChip(child: Text('Item B', style: textStyle)),
@@ -32,17 +34,12 @@ class ChipGroupsComponentShowcase extends StatelessWidget {
             ],
           ),
           FdChipGroup(
-            initialSelected: FdChip(
-              variant: FdChipVariant.selected,
-              child: Text('Item B', style: textStyle),
-            ),
+            initialSelectedIndex: 3,
             unselectedVariant: FdChipVariant.unselectedDimmed,
+            isScrollable: false,
             chips: [
               FdChip(child: Text('Item A', style: textStyle)),
-              FdChip(
-                variant: FdChipVariant.selected,
-                child: Text('Item B', style: textStyle),
-              ),
+              FdChip(child: Text('Item B', style: textStyle)),
               FdChip(child: Text('Item C', style: textStyle)),
             ],
           ),

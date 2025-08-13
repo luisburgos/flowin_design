@@ -1,4 +1,3 @@
-import 'package:example/modules/foundations/widgets/choice_chip_selector.dart';
 import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +6,16 @@ class TypefacesSamples extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChipPageView(
+    return FDChipGroupViewPager(
+      chipFactory: (context, label) => FdChip(
+        child: Text(label, style: Theme.of(context).textTheme.labelSmall),
+      ),
       items: [
-        ChipPageItem(label: 'Baseline', builder: (_) => _BaselineSamples()),
-        ChipPageItem(label: 'Brand', builder: (_) => _BrandSamples()),
+        FDChipGroupViewPage(
+          label: 'Baseline',
+          builder: (_) => _BaselineSamples(),
+        ),
+        FDChipGroupViewPage(label: 'Brand', builder: (_) => _BrandSamples()),
       ],
     );
   }
