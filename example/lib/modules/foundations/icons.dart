@@ -1,3 +1,5 @@
+import 'package:example/shared/workbench/presentation/widgets/widgets.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -7,8 +9,36 @@ class FoundationsIconsShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Padding(padding: EdgeInsets.all(12), child: Text('Icons')),
+    return ShowcaseCard(
+      child: FDChipGroupViewPager(
+        chipFactory: (context, label) => FdChip(
+          child: Text(label, style: Theme.of(context).textTheme.labelSmall),
+        ),
+        items: FDIcons.values.map((icon) {
+          return FDChipGroupViewPage(
+            label: icon.name.toUpperCase(),
+            builder: (_) => _StoriesForIcon(icon),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+class _StoriesForIcon extends StatelessWidget {
+  const _StoriesForIcon(this.icon);
+
+  final FDIcons icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: FlowinDesignSpace.space400,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: FlowinDesignIconSize.values.reversed.map((size) {
+        return FDIcon(icon: icon, size: size);
+      }).toList(),
     );
   }
 }

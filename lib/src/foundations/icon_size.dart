@@ -33,5 +33,23 @@ enum FlowinDesignIconSize {
   }
 
   /// @no-doc
+  double get stroke {
+    switch (this) {
+      case FlowinDesignIconSize.xs:
+        return 1.25;
+      case FlowinDesignIconSize.sm:
+        return 1.5;
+      case FlowinDesignIconSize.md:
+        return 1.75;
+      case FlowinDesignIconSize.lg:
+        return 2;
+      case FlowinDesignIconSize.xl:
+        return 2.5;
+      case FlowinDesignIconSize.xxl:
+        return 3;
+    }
+  }
+
+  /// @no-doc
   static const FlowinDesignIconSize defaultSize = FlowinDesignIconSize.md;
 }

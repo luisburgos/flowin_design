@@ -21,7 +21,7 @@ class _TabsComponentShowcaseState extends State<TabsComponentShowcase>
         title: 'Title',
         icon: Icon(Icons.square_outlined),
       ),
-      FDTabItem(index: 1, title: 'Title', icon: const FDIcons().split),
+      FDTabItem(index: 1, title: 'Title', icon: FDIcons.board.toIcon()),
     ];
 
     final controller = TabController(length: tabs.length, vsync: this);
@@ -38,5 +38,13 @@ class _TabsComponentShowcaseState extends State<TabsComponentShowcase>
         ],
       ),
     );
+  }
+}
+
+/// @no-doc
+extension on FDIcons {
+  /// @no-doc
+  FDIcon toIcon({FlowinDesignIconSize? size}) {
+    return FDIcon(icon: this, size: size);
   }
 }

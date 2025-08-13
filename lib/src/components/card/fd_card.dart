@@ -9,6 +9,7 @@ class FDCard extends StatelessWidget {
     required this.child,
     required this.cornerRadius,
     this.borderSide = BorderSide.none,
+    this.clipChild = false,
     this.size,
     this.backgroundColor,
     this.cornerSmoothing,
@@ -45,6 +46,9 @@ class FDCard extends StatelessWidget {
   /// @no-doc
   final List<BoxShadow>? shadows;
 
+  /// @no-doc
+  final bool clipChild;
+
   @override
   Widget build(BuildContext context) {
     final borderRadius = SmoothBorderRadius(
@@ -69,10 +73,12 @@ class FDCard extends StatelessWidget {
         color: effectiveBackgroundColor,
         shadows: shadows,
       ),
-      child: ClipSmoothRect(
-        radius: borderRadius,
-        child: child,
-      ),
+      child: clipChild
+          ? ClipSmoothRect(
+              radius: borderRadius,
+              child: child,
+            )
+          : child,
     );
   }
 }

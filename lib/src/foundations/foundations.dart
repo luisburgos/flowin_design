@@ -4,6 +4,7 @@ export 'icons.dart';
 export 'radius.dart';
 export 'schemes.dart';
 export 'space.dart';
+export 'svg_icons.dart';
 export 'text_tokens.dart';
 export 'themes.dart';
 export 'typefaces.dart';
