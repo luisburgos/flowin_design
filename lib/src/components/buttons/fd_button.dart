@@ -16,6 +16,16 @@ class FDButton extends StatelessWidget {
   });
 
   /// @no-doc
+  const FDButton.text({
+    required this.label,
+    required this.onPressed,
+    this.icon,
+    this.variant = FDButtonVariant.text,
+    this.size = FDButtonSize.defaultSize,
+    super.key,
+  });
+
+  /// @no-doc
   final String label;
 
   /// @no-doc

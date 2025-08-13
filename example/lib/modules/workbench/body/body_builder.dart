@@ -1,3 +1,4 @@
+import 'package:example/modules/components/app_bar.dart';
 import 'package:example/modules/components/buttons.dart';
 import 'package:example/modules/components/icon_buttons.dart';
 import 'package:example/modules/components/item_buttons.dart';
@@ -46,6 +47,8 @@ class BodyBuilder extends StatelessWidget {
           return const WidgetTreeItemButtonsBody();
         case ComponentsPaneOption.tabs:
           return const WidgetTreeTabsBody();
+        case ComponentsPaneOption.appBar:
+          return const AppBarComponentBody();
       }
     }
 

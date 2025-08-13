@@ -5,6 +5,9 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 /// @no-doc
 enum ComponentsPaneOption {
   /// @no-doc
+  appBar,
+
+  /// @no-doc
   tabs,
 
   /// @no-doc
@@ -19,6 +22,8 @@ enum ComponentsPaneOption {
   /// @no-doc
   String get id {
     switch (this) {
+      case ComponentsPaneOption.appBar:
+        return 'appBar';
       case ComponentsPaneOption.iconButtons:
         return 'iconButtons';
       case ComponentsPaneOption.buttons:
@@ -33,6 +38,7 @@ enum ComponentsPaneOption {
   /// @no-doc
   static ComponentsPaneOption? fromId(String? id) {
     if (id == null) return null;
+    if (id == 'appBar') return ComponentsPaneOption.appBar;
     if (id == 'tabs') return ComponentsPaneOption.tabs;
     if (id == 'buttons') return ComponentsPaneOption.buttons;
     if (id == 'iconButtons') return ComponentsPaneOption.iconButtons;
@@ -46,6 +52,8 @@ enum ComponentsPaneOption {
   /// @no-doc
   String get label {
     switch (this) {
+      case ComponentsPaneOption.appBar:
+        return 'App Bar';
       case ComponentsPaneOption.buttons:
         return 'Buttons';
       case ComponentsPaneOption.iconButtons:
@@ -60,6 +68,8 @@ enum ComponentsPaneOption {
   /// @no-doc
   IconData get iconData {
     switch (this) {
+      case ComponentsPaneOption.appBar:
+        return LucideIcons.lineSquiggle;
       case ComponentsPaneOption.buttons:
         return LucideIcons.rectangleCircle;
       case ComponentsPaneOption.iconButtons:
