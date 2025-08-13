@@ -35,9 +35,6 @@ const wbPanePadding = EdgeInsets.symmetric(
 );
 
 /// @no-doc
-const wbDefaultSideBarPadding = EdgeInsets.all(12);
-
-/// @no-doc
 final ButtonStyle wbSmallButtonStyle = IconButton.styleFrom(
   iconSize: 14,
   shape: RoundedRectangleBorder(borderRadius: wbDefaultBorderRadius),

@@ -1,4 +1,5 @@
 import 'package:example/shared/workbench/domain.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -25,6 +26,17 @@ class WorkbenchPaneToggle extends StatelessWidget {
       showSelectedIcon: false,
       selected: visiblePanes,
       onSelectionChanged: onChanged,
+      style: SegmentedButton.styleFrom(
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outlineVariant,
+          width: 1,
+        ),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        foregroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(FlowinDesignSpace.space200),
+        ),
+      ),
       segments: [
         paneButtonSegment(
           context: context,

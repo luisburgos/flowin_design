@@ -1,5 +1,6 @@
 import 'package:example/shared/workbench/constants.dart';
 import 'package:example/shared/workbench/domain.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -27,18 +28,21 @@ class WorkbenchSideBar extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final baseStyle = wbMediumButtonStyle.copyWith(
       foregroundColor: WidgetStatePropertyAll(colorScheme.outline),
+      fixedSize: const WidgetStatePropertyAll(
+        Size(FlowinDesignSpace.space600, FlowinDesignSpace.space600),
+      ),
     );
     final selectedStyle = baseStyle.copyWith(
-      foregroundColor: WidgetStatePropertyAll(colorScheme.primary),
-      backgroundColor: WidgetStatePropertyAll(colorScheme.onPrimary),
+      foregroundColor: WidgetStatePropertyAll(colorScheme.onPrimary),
+      backgroundColor: WidgetStatePropertyAll(colorScheme.primary),
       shadowColor: WidgetStatePropertyAll(
-        colorScheme.primaryContainer.withValues(alpha: 0.3),
+        colorScheme.outlineVariant.withValues(alpha: 0.3),
       ),
-      elevation: const WidgetStatePropertyAll(6),
+      elevation: const WidgetStatePropertyAll(FlowinDesignSpace.space150),
     );
 
     return Container(
-      padding: wbDefaultSideBarPadding,
+      padding: EdgeInsets.symmetric(vertical: FlowinDesignSpace.space400),
       color: Theme.of(context).colorScheme.surface,
       height: height,
       width: wbSideBarWidth,

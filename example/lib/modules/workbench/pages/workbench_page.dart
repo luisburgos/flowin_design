@@ -18,12 +18,16 @@ class WorkbenchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Logger.instance.info('✅ WorkbenchScreen build ran, query: $query');
-    var initialState = const WorkbenchState(visiblePanes: {WorkbenchPane.left});
+    var initialState = const WorkbenchState(
+      visiblePanes: {WorkbenchPane.left, WorkbenchPane.sideBar},
+    );
     if (query != null) {
       final fromQuery = WorkbenchState.fromQuery(query!);
       initialState = initialState.copyWith(
-        sidebarItem: fromQuery.sidebarItem,
-        visiblePanes: fromQuery.visiblePanes,
+        sidebarItem: fromQuery.sidebarItem ?? initialState.sidebarItem,
+        visiblePanes: fromQuery.visiblePanes.isNotEmpty
+            ? fromQuery.visiblePanes
+            : initialState.visiblePanes,
         selectedFoundationsOption: () => fromQuery.selectedFoundationsOption,
         selectedComponentsOption: () => fromQuery.selectedComponentsOption,
       );
