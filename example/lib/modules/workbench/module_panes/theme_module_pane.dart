@@ -8,7 +8,10 @@ enum FoundationsPaneOption {
   colors,
 
   /// @no-doc
-  typography;
+  typography,
+
+  /// @no-doc
+  icons;
 
   //themeWidgets;
   /// @no-doc
@@ -18,8 +21,8 @@ enum FoundationsPaneOption {
         return 'colors';
       case FoundationsPaneOption.typography:
         return 'typography';
-      //case ThemeModulePaneOption.themeWidgets:
-      //return 'themeWidgets';
+      case FoundationsPaneOption.icons:
+        return 'icons';
     }
   }
 
@@ -27,8 +30,8 @@ enum FoundationsPaneOption {
   static FoundationsPaneOption? fromId(String? id) {
     if (id == null) return null;
     if (id == 'colors') return FoundationsPaneOption.colors;
+    if (id == 'icons') return FoundationsPaneOption.icons;
     if (id == 'typography') return FoundationsPaneOption.typography;
-    //if (id == 'themeWidgets') return ThemeModulePaneOption.themeWidgets;
     throw Exception('Invalid ThemeModulePaneOption id: $id');
   }
 
@@ -42,8 +45,8 @@ enum FoundationsPaneOption {
         return 'Colors';
       case FoundationsPaneOption.typography:
         return 'Typography';
-      //case ThemeModulePaneOption.themeWidgets:
-      //return 'Theme Widgets';
+      case FoundationsPaneOption.icons:
+        return 'Icons';
     }
   }
 
@@ -54,8 +57,8 @@ enum FoundationsPaneOption {
         return LucideIcons.pipette;
       case FoundationsPaneOption.typography:
         return LucideIcons.typeOutline;
-      //case ThemeModulePaneOption.themeWidgets:
-      //return LucideIcons.gem;
+      case FoundationsPaneOption.icons:
+        return LucideIcons.flag;
     }
   }
 }

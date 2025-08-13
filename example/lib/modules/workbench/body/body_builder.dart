@@ -6,6 +6,7 @@ import 'package:example/modules/components/icon_buttons.dart';
 import 'package:example/modules/components/item_buttons.dart';
 import 'package:example/modules/components/tabs.dart';
 import 'package:example/modules/foundations/colors.dart';
+import 'package:example/modules/foundations/icons.dart';
 import 'package:example/modules/foundations/typography.dart';
 import 'package:example/modules/workbench/module_panes/theme_module_pane.dart';
 import 'package:example/modules/workbench/module_panes/widget_tree_module_pane.dart';
@@ -29,9 +30,11 @@ class BodyBuilder extends StatelessWidget {
     if (state.sidebarItem?.isFoundations ?? false) {
       switch (state.selectedFoundationsOption) {
         case FoundationsPaneOption.colors:
-          return const ThemeColorsBody();
+          return const FoundationsColorsShowcase();
         case FoundationsPaneOption.typography:
-          return const ThemeTypographyBody();
+          return const FoundationsTypographyShowcase();
+        case FoundationsPaneOption.icons:
+          return const FoundationsIconsShowcase();
         case null:
           break;
       }
