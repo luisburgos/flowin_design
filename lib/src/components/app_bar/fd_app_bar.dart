@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 /// @no-doc
 const double fdDefaultAppBarHeight =
-    fdDefaultAppBarPadding + fdDefaultAppBarActionSize;
+    fdDefaultAppBarPadding + fdDefaultAppBarContentHeight;
 
 /// @no-doc
-const double fdDefaultAppBarActionSize = FlowinDesignSpace.space1200;
+const double fdDefaultAppBarContentHeight = FlowinDesignSpace.space1200;
 
 /// @no-doc
 const double fdDefaultAppBarPadding = FlowinDesignSpace.space200;
@@ -15,9 +15,10 @@ const double fdDefaultAppBarPadding = FlowinDesignSpace.space200;
 class FDAppBar extends StatelessWidget {
   /// @no-doc
   const FDAppBar({
-    required this.leading,
-    required this.trailing,
+    this.leading,
+    this.trailing,
     this.child,
+    this.footer,
     super.key,
   });
 
@@ -30,9 +31,15 @@ class FDAppBar extends StatelessWidget {
   /// @no-doc
   final Widget? child;
 
+  /// @no-doc
+  final Widget? footer;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      constraints: const BoxConstraints(
+        minHeight: fdDefaultAppBarHeight,
+      ),
       padding: const EdgeInsets.only(
         left: fdDefaultAppBarPadding,
         right: fdDefaultAppBarPadding,
@@ -40,19 +47,48 @@ class FDAppBar extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              ColoredBox(
-                color: Colors.transparent,
-                child: leading ?? const _NoActionPlaceholder(),
-              ),
-              child ?? const Spacer(),
-              ColoredBox(
-                color: Colors.transparent,
-                child: trailing ?? const _NoActionPlaceholder(),
-              ),
-            ],
+          Container(
+            constraints: const BoxConstraints(
+              minHeight: fdDefaultAppBarContentHeight,
+            ),
+            child: Row(
+              children: [
+                ColoredBox(
+                  color: Colors.transparent,
+                  child: leading != null
+                      ? Container(
+                          constraints: const BoxConstraints(
+                            minHeight: fdDefaultAppBarContentHeight,
+                            minWidth: fdDefaultAppBarContentHeight,
+                          ),
+                          height: fdDefaultAppBarContentHeight,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: FlowinDesignSpace.space100,
+                          ),
+                          child: leading,
+                        )
+                      : const _NoActionPlaceholder(),
+                ),
+                if (child != null) Expanded(child: child!) else const Spacer(),
+                ColoredBox(
+                  color: Colors.transparent,
+                  child: trailing != null
+                      ? Container(
+                          constraints: const BoxConstraints(
+                            minHeight: fdDefaultAppBarContentHeight,
+                            minWidth: fdDefaultAppBarContentHeight,
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: FlowinDesignSpace.space100,
+                          ),
+                          child: trailing,
+                        )
+                      : const _NoActionPlaceholder(),
+                ),
+              ],
+            ),
           ),
+          if (footer != null) footer!,
         ],
       ),
     );
@@ -65,7 +101,7 @@ class _NoActionPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox.square(
-      dimension: fdDefaultAppBarActionSize,
+      dimension: fdDefaultAppBarContentHeight,
     );
   }
 }

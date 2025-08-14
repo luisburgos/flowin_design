@@ -87,6 +87,11 @@ enum FDIcons {
   spark;
 
   /// @no-doc
+  FDIcon toIcon({FlowinDesignIconSize? size}) {
+    return FDIcon(icon: this, size: size);
+  }
+
+  /// @no-doc
   IconData get iconData => switch (this) {
     FDIcons.board => LucideIcons.rows2,
     FDIcons.timeline => LucideIcons.route,

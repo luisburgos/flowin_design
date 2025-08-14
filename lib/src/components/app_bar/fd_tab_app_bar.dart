@@ -1,4 +1,4 @@
-import 'package:flowin_design/src/components/components.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -7,8 +7,9 @@ class FDTabAppBar extends StatelessWidget {
   const FDTabAppBar({
     required this.controller,
     required this.tabs,
-    required this.leading,
-    required this.trailing,
+    this.leading,
+    this.trailing,
+    this.dividerColor,
     super.key,
   });
 
@@ -19,45 +20,31 @@ class FDTabAppBar extends StatelessWidget {
   final List<Widget> tabs;
 
   /// @no-doc
-  final Widget leading;
+  final Widget? leading;
 
   /// @no-doc
-  final Widget trailing;
+  final Widget? trailing;
+
+  /// @no-doc
+  final Color? dividerColor;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const SizedBox(width: 8),
-            ColoredBox(
-              color: Colors.transparent,
-              child: leading,
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: ColoredBox(
-                color: Colors.transparent,
-                child: FDTabs(
-                  controller: controller,
-                  tabs: tabs,
-                ),
-              ),
-            ),
-            const SizedBox(width: 8),
-            ColoredBox(
-              color: Colors.transparent,
-              child: trailing,
-            ),
-            const SizedBox(width: 8),
-          ],
-        ),
-        const Divider(
-          height: 0,
-          thickness: 0.3,
-        ),
-      ],
+    final effectiveDividerColor =
+        dividerColor ?? Theme.of(context).colorScheme.outlineVariant;
+
+    return FDAppBar(
+      leading: leading,
+      trailing: trailing,
+      footer: Divider(
+        height: 1,
+        thickness: 1,
+        color: effectiveDividerColor,
+      ),
+      child: FDTabs(
+        controller: controller,
+        tabs: tabs,
+      ),
     );
   }
 }

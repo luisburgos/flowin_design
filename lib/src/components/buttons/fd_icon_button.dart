@@ -16,6 +16,33 @@ class FDIconButton extends StatelessWidget {
   });
 
   /// @no-doc
+  const FDIconButton.tonal({
+    required this.onPressed,
+    required this.icon,
+    this.variant = FDButtonVariant.tonal,
+    this.size = FDButtonSize.defaultSize,
+    super.key,
+  });
+
+  /// @no-doc
+  const FDIconButton.text({
+    required this.onPressed,
+    required this.icon,
+    this.variant = FDButtonVariant.text,
+    this.size = FDButtonSize.defaultSize,
+    super.key,
+  });
+
+  /// @no-doc
+  const FDIconButton.destructive({
+    required this.onPressed,
+    required this.icon,
+    this.variant = FDButtonVariant.destructive,
+    this.size = FDButtonSize.defaultSize,
+    super.key,
+  });
+
+  /// @no-doc
   final VoidCallback onPressed;
 
   /// @no-doc
