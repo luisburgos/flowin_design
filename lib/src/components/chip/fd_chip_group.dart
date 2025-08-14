@@ -33,6 +33,7 @@ class FdChipGroup extends StatefulWidget {
     this.initialSelectedIndex, // only used when controller is null
     this.unselectedVariant = FdChipVariant.unselected,
     this.onItemTap,
+    this.onItemLongTap,
     this.height,
     this.isScrollable = true,
     this.padding = const EdgeInsets.symmetric(
@@ -55,7 +56,20 @@ class FdChipGroup extends StatefulWidget {
   final FdChipVariant unselectedVariant;
 
   /// Tap callback (fires after selection is applied).
-  final void Function(int index, FdChip chip)? onItemTap;
+  final void Function(
+    int index,
+    FdChip chip,
+    ScrollController scrollController,
+  )?
+  onItemTap;
+
+  /// Tap callback (fires after selection is applied).
+  final void Function(
+    int index,
+    FdChip chip,
+    ScrollController scrollController,
+  )?
+  onItemLongTap;
 
   /// Layout options similar to your ChipPageView.
   final bool isScrollable;
@@ -76,6 +90,7 @@ class FdChipGroup extends StatefulWidget {
 class _FdChipGroupState extends State<FdChipGroup> {
   late final bool _ownsController;
   late FdChipGroupController _controller;
+  final ScrollController _scrollController = ScrollController();
 
   void _updateState() {
     // Rebuild when selection changes.
@@ -149,12 +164,17 @@ class _FdChipGroupState extends State<FdChipGroup> {
               // Keep original onTap if you want toggle behavior;
               // otherwise null.
               onTap: chip.onTap,
+              onLongPress: chip.onLongPress,
             )
           : chip.copyWith(
               variant: widget.unselectedVariant,
               onTap: () {
                 _controller.index = i;
-                widget.onItemTap?.call(i, chip);
+                widget.onItemTap?.call(i, chip, _scrollController);
+              },
+              onLongPress: () {
+                _controller.index = i;
+                widget.onItemLongTap?.call(i, chip, _scrollController);
               },
             );
     }
@@ -163,6 +183,7 @@ class _FdChipGroupState extends State<FdChipGroup> {
       height: widget.height ?? FlowinDesignSpace.space1200,
       child: widget.isScrollable
           ? ListView.separated(
+              controller: _scrollController,
               padding: widget.padding,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),

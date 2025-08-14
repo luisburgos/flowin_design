@@ -182,7 +182,7 @@ class _FDChipGroupViewPagerState extends State<FDChipGroupViewPager> {
           isScrollable: widget.scrollChips,
           padding: widget.chipsPadding,
           chipSpacing: widget.chipSpacing,
-          onItemTap: (i, _) => _goTo(i),
+          onItemTap: (i, chip, scrollController) => _goTo(i),
         ),
         const Divider(height: 1),
         Expanded(

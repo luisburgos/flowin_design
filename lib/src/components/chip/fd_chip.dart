@@ -119,10 +119,12 @@ class FdChip extends StatelessWidget {
   FdChip copyWith({
     FdChipVariant? variant,
     VoidCallback? onTap,
+    VoidCallback? onLongPress,
   }) {
     return FdChip(
       variant: variant ?? this.variant,
       onTap: onTap ?? this.onTap,
+      onLongPress: onLongPress ?? this.onLongPress,
       borderColor: borderColor,
       backgroundColor: backgroundColor,
       border: border,
