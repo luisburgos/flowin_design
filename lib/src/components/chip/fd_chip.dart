@@ -33,6 +33,7 @@ class FdChip extends StatelessWidget {
   const FdChip({
     this.variant = FdChipVariant.unselected,
     this.onTap,
+    this.onLongPress,
     this.borderColor,
     this.backgroundColor,
     this.child,
@@ -51,6 +52,9 @@ class FdChip extends StatelessWidget {
 
   /// @no-doc
   final VoidCallback? onTap;
+
+  /// @no-doc
+  final VoidCallback? onLongPress;
 
   /// @no-doc
   final Border? border;
@@ -93,6 +97,7 @@ class FdChip extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: Opacity(
         opacity: variant.opacity,
         child: Container(
