@@ -9,8 +9,8 @@ import 'package:example/modules/components/tabs.dart';
 import 'package:example/modules/foundations/colors.dart';
 import 'package:example/modules/foundations/icons.dart';
 import 'package:example/modules/foundations/typography.dart';
-import 'package:example/modules/workbench/module_panes/theme_module_pane.dart';
-import 'package:example/modules/workbench/module_panes/widget_tree_module_pane.dart';
+import 'package:example/modules/workbench/module_panes/components_module_pane.dart';
+import 'package:example/modules/workbench/module_panes/foundations_module_pane.dart';
 import 'package:example/shared/logger/logger.dart';
 import 'package:example/shared/workbench/bloc/workbench_bloc.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,8 @@ class BodyBuilder extends StatelessWidget {
       }
     }
 
-    if (state.sidebarItem?.isComponents ?? false) {
+    if ((state.selectedComponentsOption?.isEnabled ?? false) &&
+        (state.sidebarItem?.isComponents ?? false)) {
       switch (state.selectedComponentsOption) {
         case null:
           break;

@@ -28,6 +28,16 @@ enum ComponentsPaneOption {
   /// @no-doc
   buttons;
 
+  /// Options NOT ready for production.
+  bool get isEnabled {
+    switch (this) {
+      case ComponentsPaneOption.chipGroup:
+        return false;
+      default:
+        return true;
+    }
+  }
+
   /// @no-doc
   String get id {
     switch (this) {
@@ -130,14 +140,17 @@ class ComponentsPaneView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: ComponentsPaneOption.values.map((option) {
-        return ModulePaneOptionTile(
-          isSelected: option == selected,
-          name: option.label,
-          leadingIcon: option.iconData,
-          onPressed: () => onOptionTap(option),
-        );
-      }).toList(),
+      children: ComponentsPaneOption.values
+          .where((option) => option.isEnabled)
+          .map((option) {
+            return ModulePaneOptionTile(
+              isSelected: option == selected,
+              name: option.label,
+              leadingIcon: option.iconData,
+              onPressed: () => onOptionTap(option),
+            );
+          })
+          .toList(),
     );
   }
 }

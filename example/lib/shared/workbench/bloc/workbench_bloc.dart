@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:example/modules/workbench/module_panes/theme_module_pane.dart';
-import 'package:example/modules/workbench/module_panes/widget_tree_module_pane.dart';
+import 'package:example/modules/workbench/module_panes/components_module_pane.dart';
+import 'package:example/modules/workbench/module_panes/foundations_module_pane.dart';
 import 'package:example/shared/logger/logger.dart';
 import 'package:example/shared/workbench/domain.dart';
 import 'package:example/shared/workbench/workbench_query.dart';

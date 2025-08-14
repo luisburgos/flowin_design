@@ -1,5 +1,5 @@
-import 'package:example/modules/workbench/module_panes/theme_module_pane.dart';
-import 'package:example/modules/workbench/module_panes/widget_tree_module_pane.dart';
+import 'package:example/modules/workbench/module_panes/components_module_pane.dart';
+import 'package:example/modules/workbench/module_panes/foundations_module_pane.dart';
 import 'package:example/shared/logger/logger.dart';
 import 'package:example/shared/workbench/bloc/workbench_bloc.dart';
 import 'package:example/shared/workbench/domain.dart';
