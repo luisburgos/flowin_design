@@ -101,6 +101,7 @@ class FdChip extends StatelessWidget {
       child: Opacity(
         opacity: variant.opacity,
         child: Container(
+          margin: margin,
           constraints: constraints,
           padding: padding ?? const EdgeInsets.all(FlowinDesignSpace.space400),
           decoration: BoxDecoration(
