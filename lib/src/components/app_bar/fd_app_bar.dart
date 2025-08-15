@@ -40,16 +40,17 @@ class FDAppBar extends StatelessWidget {
       constraints: const BoxConstraints(
         minHeight: fdDefaultAppBarHeight,
       ),
-      padding: const EdgeInsets.only(
-        left: fdDefaultAppBarPadding,
-        right: fdDefaultAppBarPadding,
-        top: fdDefaultAppBarPadding,
-      ),
       child: Column(
         children: [
           Container(
+            color: Colors.transparent,
             constraints: const BoxConstraints(
               minHeight: fdDefaultAppBarContentHeight,
+            ),
+            padding: const EdgeInsets.only(
+              left: fdDefaultAppBarPadding,
+              right: fdDefaultAppBarPadding,
+              top: fdDefaultAppBarPadding,
             ),
             child: Row(
               children: [
