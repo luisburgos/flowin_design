@@ -1,3 +1,4 @@
+import 'package:example/modules/components/action_sheets.dart';
 import 'package:example/modules/components/app_bar.dart';
 import 'package:example/modules/components/buttons.dart';
 import 'package:example/modules/components/cards.dart';
@@ -62,6 +63,8 @@ class BodyBuilder extends StatelessWidget {
           return const ChipGroupsComponentShowcase();
         case ComponentsPaneOption.cards:
           return const CardsComponentShowcase();
+        case ComponentsPaneOption.actionSheets:
+          return const ActionSheetsComponentShowcase();
       }
     }
 

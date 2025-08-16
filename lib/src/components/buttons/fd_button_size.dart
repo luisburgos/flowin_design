@@ -22,6 +22,13 @@ enum FDButtonSize {
   };
 
   /// @no-doc
+  double get padding => switch (this) {
+    xs => 8,
+    sm => 4,
+    md => 0,
+  };
+
+  /// @no-doc
   FlowinDesignIconSize get iconSize => switch (this) {
     xs => FlowinDesignIconSize.sm,
     sm => FlowinDesignIconSize.md,

@@ -5,6 +5,9 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 /// @no-doc
 enum ComponentsPaneOption {
   /// @no-doc
+  actionSheets,
+
+  /// @no-doc
   appBar,
 
   /// @no-doc
@@ -57,6 +60,8 @@ enum ComponentsPaneOption {
         return 'chipGroup';
       case ComponentsPaneOption.cards:
         return 'cards';
+      case ComponentsPaneOption.actionSheets:
+        return 'actionSheets';
     }
   }
 
@@ -71,6 +76,7 @@ enum ComponentsPaneOption {
     if (id == 'iconButtons') return ComponentsPaneOption.iconButtons;
     if (id == 'itemButtons') return ComponentsPaneOption.itemButtons;
     if (id == 'cards') return ComponentsPaneOption.cards;
+    if (id == 'actionSheets') return ComponentsPaneOption.actionSheets;
     throw Exception('Invalid WidgetTreeModulePaneOption id: $id');
   }
 
@@ -96,6 +102,8 @@ enum ComponentsPaneOption {
         return 'Chip Group';
       case ComponentsPaneOption.cards:
         return 'Cards';
+      case ComponentsPaneOption.actionSheets:
+        return 'Action Sheets';
     }
   }
 
@@ -118,6 +126,8 @@ enum ComponentsPaneOption {
         return LucideIcons.tags;
       case ComponentsPaneOption.cards:
         return LucideIcons.cardSim;
+      case ComponentsPaneOption.actionSheets:
+        return LucideIcons.list;
     }
   }
 }

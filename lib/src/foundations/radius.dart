@@ -25,6 +25,9 @@ class FlowinDesignRadius {
   static const radius800 = 32.0;
 
   /// @no-doc
+  static const radius1000 = 40.0;
+
+  /// @no-doc
   static const iOSSmooth = 0.6;
 
   /// @no-doc

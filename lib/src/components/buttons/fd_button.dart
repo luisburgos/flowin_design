@@ -12,6 +12,7 @@ class FDButton extends StatelessWidget {
     this.icon,
     this.variant = FDButtonVariant.filled,
     this.size = FDButtonSize.defaultSize,
+    this.padding,
     super.key,
   });
 
@@ -22,6 +23,7 @@ class FDButton extends StatelessWidget {
     this.icon,
     this.variant = FDButtonVariant.text,
     this.size = FDButtonSize.defaultSize,
+    this.padding,
     super.key,
   });
 
@@ -40,6 +42,9 @@ class FDButton extends StatelessWidget {
   /// @no-doc
   final FDButtonVariant variant;
 
+  /// @no-doc
+  final EdgeInsets? padding;
+
   @override
   Widget build(BuildContext context) {
     final style = styleFrom(
@@ -48,11 +53,15 @@ class FDButton extends StatelessWidget {
       size: size,
     );
 
-    return FilledButton(
-      onPressed: onPressed,
-      style: style,
-      //icon: icon,
-      child: Text(label),
+    return Container(
+      color: Colors.transparent,
+      padding: padding ?? EdgeInsets.symmetric(vertical: size.padding),
+      child: FilledButton(
+        onPressed: onPressed,
+        style: style,
+        //icon: icon,
+        child: Text(label),
+      ),
     );
   }
 

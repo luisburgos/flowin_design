@@ -12,6 +12,7 @@ class FDIconButton extends StatelessWidget {
     required this.icon,
     this.variant = FDButtonVariant.filled,
     this.size = FDButtonSize.defaultSize,
+    this.padding,
     super.key,
   });
 
@@ -21,6 +22,7 @@ class FDIconButton extends StatelessWidget {
     required this.icon,
     this.variant = FDButtonVariant.tonal,
     this.size = FDButtonSize.defaultSize,
+    this.padding,
     super.key,
   });
 
@@ -30,6 +32,7 @@ class FDIconButton extends StatelessWidget {
     required this.icon,
     this.variant = FDButtonVariant.text,
     this.size = FDButtonSize.defaultSize,
+    this.padding,
     super.key,
   });
 
@@ -39,6 +42,7 @@ class FDIconButton extends StatelessWidget {
     required this.icon,
     this.variant = FDButtonVariant.destructive,
     this.size = FDButtonSize.defaultSize,
+    this.padding,
     super.key,
   });
 
@@ -54,6 +58,9 @@ class FDIconButton extends StatelessWidget {
   /// @no-doc
   final FDButtonVariant variant;
 
+  /// @no-doc
+  final EdgeInsets? padding;
+
   @override
   Widget build(BuildContext context) {
     final style = styleFrom(
@@ -62,10 +69,14 @@ class FDIconButton extends StatelessWidget {
       size: size,
     );
 
-    return IconButton(
-      onPressed: onPressed,
-      style: style,
-      icon: icon,
+    return Container(
+      color: Colors.transparent,
+      padding: padding ?? EdgeInsets.all(size.padding),
+      child: IconButton(
+        onPressed: onPressed,
+        style: style,
+        icon: icon,
+      ),
     );
   }
 
