@@ -2,8 +2,7 @@ import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
-const double fdDefaultAppBarHeight =
-    fdDefaultAppBarPadding + fdDefaultAppBarContentHeight;
+const double fdDefaultAppBarHeight = FlowinDesignSpace.space1400;
 
 /// @no-doc
 const double fdDefaultAppBarContentHeight = FlowinDesignSpace.space1200;
@@ -37,72 +36,77 @@ class FDAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.transparent,
       constraints: const BoxConstraints(
-        minHeight: fdDefaultAppBarHeight,
+        maxHeight: fdDefaultAppBarHeight,
       ),
-      child: Column(
+      child: Stack(
         children: [
           Container(
             color: Colors.transparent,
-            constraints: const BoxConstraints(
-              minHeight: fdDefaultAppBarContentHeight,
-            ),
             padding: const EdgeInsets.only(
+              top: fdDefaultAppBarPadding,
               left: fdDefaultAppBarPadding,
               right: fdDefaultAppBarPadding,
-              top: fdDefaultAppBarPadding,
             ),
             child: Row(
               children: [
                 ColoredBox(
                   color: Colors.transparent,
                   child: leading != null
-                      ? Container(
-                          constraints: const BoxConstraints(
-                            minHeight: fdDefaultAppBarContentHeight,
-                            minWidth: fdDefaultAppBarContentHeight,
-                          ),
-                          height: fdDefaultAppBarContentHeight,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: FlowinDesignSpace.space100,
-                          ),
+                      ? _AppBarSquareContainer(
                           child: leading,
                         )
-                      : const _NoActionPlaceholder(),
+                      : const _AppBarSquareContainer(),
                 ),
-                if (child != null) Expanded(child: child!) else const Spacer(),
+                if (child != null)
+                  Expanded(
+                    child: ColoredBox(
+                      color: Colors.transparent,
+                      child: child,
+                    ),
+                  )
+                else
+                  const Spacer(),
                 ColoredBox(
                   color: Colors.transparent,
                   child: trailing != null
-                      ? Container(
-                          constraints: const BoxConstraints(
-                            minHeight: fdDefaultAppBarContentHeight,
-                            minWidth: fdDefaultAppBarContentHeight,
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            vertical: FlowinDesignSpace.space100,
-                          ),
+                      ? _AppBarSquareContainer(
                           child: trailing,
                         )
-                      : const _NoActionPlaceholder(),
+                      : const _AppBarSquareContainer(),
                 ),
               ],
             ),
           ),
-          if (footer != null) footer!,
+          if (footer != null)
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: footer!,
+            ),
         ],
       ),
     );
   }
 }
 
-class _NoActionPlaceholder extends StatelessWidget {
-  const _NoActionPlaceholder();
+class _AppBarSquareContainer extends StatelessWidget {
+  const _AppBarSquareContainer({
+    this.child,
+  });
+
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.square(
-      dimension: fdDefaultAppBarContentHeight,
+    return Container(
+      constraints: const BoxConstraints(
+        minHeight: fdDefaultAppBarContentHeight,
+        minWidth: fdDefaultAppBarContentHeight,
+      ),
+      child: child,
     );
   }
 }
