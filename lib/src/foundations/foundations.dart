@@ -3,6 +3,7 @@ export 'icon_size.dart';
 export 'icons.dart';
 export 'radius.dart';
 export 'schemes.dart';
+export 'shadows.dart';
 export 'space.dart';
 export 'svg_icons.dart';
 export 'text_tokens.dart';
