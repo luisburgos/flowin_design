@@ -65,7 +65,7 @@ class FDItemButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(FlowinDesignRadius.radius400),
       ),
       padding: const EdgeInsets.all(16),
-      minimumSize: Size(281, size.fixedSize),
+      minimumSize: Size.fromHeight(size.fixedSize),
       iconSize: size.iconSize.value,
       foregroundColor: colors.foregroundColor,
       backgroundColor: colors.backgroundColor,

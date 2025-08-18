@@ -13,6 +13,7 @@ class FDActionSheet extends StatelessWidget {
     this.body,
     this.footer,
     this.onClose,
+    this.margin,
     super.key,
   });
 
@@ -37,13 +38,25 @@ class FDActionSheet extends StatelessWidget {
   ///@no-doc
   final VoidCallback? onClose;
 
+  ///@no-doc
+  final EdgeInsets? margin;
+
   @override
   Widget build(BuildContext context) {
     return FDCard(
+      margin:
+          margin ??
+          const EdgeInsets.only(
+            top: FlowinDesignSpace.space800,
+            bottom: FlowinDesignSpace.space600,
+            left: FlowinDesignSpace.space400,
+            right: FlowinDesignSpace.space400,
+          ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       cornerRadius: FlowinDesignRadius.radius1000,
       padding: const EdgeInsets.all(FlowinDesignSpace.space600),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         spacing: FlowinDesignSpace.space400,
         children: [
           FDActionSheetHeader(

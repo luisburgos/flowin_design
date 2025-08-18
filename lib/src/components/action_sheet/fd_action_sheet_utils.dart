@@ -12,16 +12,18 @@ extension PopDefaultActionSheet on BuildContext {
 Future<T?> showDefaultActionSheet<T>({
   required BuildContext context,
   required WidgetBuilder builder,
+  BoxConstraints? constraints,
   BorderRadius? borderRadius,
   Color? backgroundColor,
+  Clip? clipBehavior,
   bool isScrollControlled = false,
 }) {
   return showModalBottomSheet<T>(
     context: context,
     backgroundColor: backgroundColor ?? Colors.transparent,
     isScrollControlled: isScrollControlled,
-    constraints: const BoxConstraints(minWidth: double.infinity),
-    clipBehavior: Clip.none,
+    constraints: constraints ?? const BoxConstraints(minWidth: double.infinity),
+    clipBehavior: clipBehavior ?? Clip.none,
     builder: builder,
   );
 }
