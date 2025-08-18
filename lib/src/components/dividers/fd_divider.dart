@@ -2,27 +2,50 @@ import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
-class FdDivider extends StatelessWidget {
+class FDDivider extends StatelessWidget {
   /// @no-doc
-  const FdDivider({super.key});
+  const FDDivider({
+    this.color,
+    this.thickness,
+    super.key,
+  });
+
+  /// @no-doc
+  final double? thickness;
+
+  /// @no-doc
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(
+    return Divider(
       height: FlowinDesignSpace.space50,
+      thickness: thickness,
+      color: color ?? Theme.of(context).colorScheme.outlineVariant,
     );
   }
 }
 
 /// @no-doc
-class FdVerticalDivider extends StatelessWidget {
+class FDVerticalDivider extends StatelessWidget {
   /// @no-doc
-  const FdVerticalDivider({super.key});
+  const FDVerticalDivider({
+    this.color,
+    this.thickness,
+    super.key,
+  });
 
+  /// @no-doc
+  final double? thickness;
+
+  /// @no-doc
+  final Color? color;
   @override
   Widget build(BuildContext context) {
-    return const VerticalDivider(
+    return VerticalDivider(
       width: FlowinDesignSpace.space50,
+      thickness: thickness,
+      color: color ?? Theme.of(context).colorScheme.outlineVariant,
     );
   }
 }

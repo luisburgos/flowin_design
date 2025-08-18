@@ -90,7 +90,7 @@ class WorkbenchView extends StatelessWidget {
               isExpanded: state.visiblePanes.contains(WorkbenchPane.sideBar),
               icon: const Icon(LucideIcons.chevronRight),
               closeIcon: LucideIcons.chevronLeft,
-              rightDivider: const FdVerticalDivider(),
+              rightDivider: const FDVerticalDivider(),
               height: bodyHeight,
               expandedWidth: 60,
               onOpenPressed: () {
@@ -118,7 +118,7 @@ class WorkbenchView extends StatelessWidget {
                 isExpanded: showModulePane,
                 icon: const Icon(LucideIcons.panelLeft),
                 leftDivider: const SizedBox.shrink(),
-                rightDivider: const FdVerticalDivider(),
+                rightDivider: const FDVerticalDivider(),
                 height: bodyHeight,
                 expandedWidth: 220,
                 onOpenPressed: () => context.read<WorkbenchBloc>().add(
@@ -138,7 +138,7 @@ class WorkbenchView extends StatelessWidget {
                 isExpanded: showPropertyPane,
                 icon: const Icon(LucideIcons.panelRight),
                 height: bodyHeight,
-                leftDivider: const FdVerticalDivider(),
+                leftDivider: const FDVerticalDivider(),
                 expandedWidth: 220,
                 onOpenPressed: () => context.read<WorkbenchBloc>().add(
                   OpenPane(WorkbenchPane.right),
@@ -151,7 +151,7 @@ class WorkbenchView extends StatelessWidget {
               agentChatPane: ExpandablePane(
                 name: 'Agent/Chat',
                 isExpanded: showAgentChatPane,
-                leftDivider: const FdVerticalDivider(),
+                leftDivider: const FDVerticalDivider(),
                 icon: const Icon(LucideIcons.sparkles),
                 height: bodyHeight,
                 expandedWidth: 300,

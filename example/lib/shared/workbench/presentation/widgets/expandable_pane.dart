@@ -211,7 +211,7 @@ class _ExpandedContent extends StatelessWidget {
             ],
           ),
         ),
-        const FdDivider(),
+        const FDDivider(),
         Expanded(child: child),
       ],
     );

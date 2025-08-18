@@ -30,7 +30,7 @@ class WorkbenchLayout extends StatelessWidget {
       body: Column(
         children: [
           topBar,
-          const FdDivider(),
+          const FDDivider(),
           Expanded(
             child: Row(
               children: [
@@ -39,7 +39,7 @@ class WorkbenchLayout extends StatelessWidget {
               ],
             ),
           ),
-          const FdDivider(),
+          const FDDivider(),
           bottomBar,
         ],
       ),
