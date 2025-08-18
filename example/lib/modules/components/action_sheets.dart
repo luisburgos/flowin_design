@@ -83,7 +83,7 @@ class _CustomBody extends StatelessWidget {
       onClose: () {
         context.popDefaultActionSheet();
       },
-      body: _FakeBody('Share Card'),
+      body: _FakeBody('Share Card', height: 400),
       footer: Row(
         children: [
           Expanded(
@@ -135,15 +135,19 @@ class _MenuActionSheet extends StatelessWidget {
 }
 
 class _FakeBody extends StatelessWidget {
-  const _FakeBody(this.text);
+  const _FakeBody(this.text, {required this.height});
 
   final String text;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return FDCard(
       cornerRadius: FlowinDesignRadius.radius500,
-      child: SizedBox(height: 200, child: Center(child: Text(text))),
+      child: SizedBox(
+        height: height,
+        child: Center(child: Text(text)),
+      ),
     );
   }
 }

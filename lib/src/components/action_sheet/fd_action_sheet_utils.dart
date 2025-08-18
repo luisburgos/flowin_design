@@ -16,7 +16,7 @@ Future<T?> showDefaultActionSheet<T>({
   BorderRadius? borderRadius,
   Color? backgroundColor,
   Clip? clipBehavior,
-  bool isScrollControlled = false,
+  bool isScrollControlled = true,
 }) {
   return showModalBottomSheet<T>(
     context: context,
