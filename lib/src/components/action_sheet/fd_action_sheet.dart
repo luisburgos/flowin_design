@@ -64,7 +64,11 @@ class FDActionSheet extends StatelessWidget {
             subtitle: subtitle,
             displayClose: displayClose,
             icon: headerIcon,
-            onClose: onClose,
+            onClose:
+                onClose ??
+                () {
+                  context.popDefaultActionSheet();
+                },
           ),
           if (body != null)
             ColoredBox(
