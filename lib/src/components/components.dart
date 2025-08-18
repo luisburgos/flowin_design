@@ -1,4 +1,5 @@
 export 'action_sheet/fd_action_sheet.dart';
+export 'action_sheet/fd_action_sheet_utils.dart';
 export 'app_bar/fd_app_bar.dart';
 export 'app_bar/fd_tab_app_bar.dart';
 export 'buttons/fd_button.dart';
