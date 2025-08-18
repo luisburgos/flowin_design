@@ -97,14 +97,17 @@ class FDButton extends StatelessWidget {
     );
     final textTheme = Theme.of(context).textTheme;
 
-    final effectiveChild =
-        child ??
-        Text(
-          label!,
-          style: textTheme.labelLarge?.copyWith(
-            color: colors.foregroundColor,
+    // Ensure [child] always adheres to the proper Button text style.
+    final effectiveChild = DefaultTextStyle.merge(
+      style: textTheme.labelLarge?.copyWith(
+        color: colors.foregroundColor,
+      ),
+      child:
+          child ??
+          Text(
+            label!,
           ),
-        );
+    );
 
     return Container(
       color: Colors.transparent,
