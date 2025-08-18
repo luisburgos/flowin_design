@@ -174,6 +174,7 @@ class _FDChipGroupViewPagerState extends State<FDChipGroupViewPager> {
         .toList(growable: false);
 
     return Column(
+      spacing: FlowinDesignSpace.space300,
       children: [
         FdChipGroup(
           chips: chips,
@@ -184,7 +185,7 @@ class _FDChipGroupViewPagerState extends State<FDChipGroupViewPager> {
           chipSpacing: widget.chipSpacing,
           onItemTap: (i, chip, scrollController) => _goTo(i),
         ),
-        const Divider(height: 1),
+        const FdDivider(),
         Expanded(
           child: PageView.builder(
             controller: _pageController,
