@@ -1,8 +1,8 @@
 /// @no-doc
 class FlowinDesignBorders {
   /// @no-doc
-  double get regular => 1;
+  static const double regular = 1;
 
   /// @no-doc
-  double get bold => 2;
+  static const double bold = 2;
 }
