@@ -58,7 +58,7 @@ class FDItemButton extends StatelessWidget {
     required FDButtonVariant variant,
     FDButtonSize size = FDButtonSize.defaultSize,
   }) {
-    final colors = getVariantColors(context, variant: variant);
+    final colors = getFDButtonVariantColors(context, variant: variant);
     return FilledButton.styleFrom(
       alignment: Alignment.centerLeft,
       shape: RoundedRectangleBorder(

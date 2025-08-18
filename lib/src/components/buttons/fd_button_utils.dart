@@ -4,7 +4,7 @@ import 'package:flowin_design/src/foundations/foundations.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
-({Color? backgroundColor, Color? foregroundColor}) getVariantColors(
+({Color? backgroundColor, Color? foregroundColor}) getFDButtonVariantColors(
   BuildContext context, {
   required FDButtonVariant variant,
 }) {

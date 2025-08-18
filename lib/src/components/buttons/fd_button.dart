@@ -1,44 +1,73 @@
 import 'package:flowin_design/flowin_design.dart';
-import 'package:flowin_design/src/components/buttons/fd_button_utils.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
 class FDButton extends StatelessWidget {
   /// @no-doc
   const FDButton({
-    required this.label,
     required this.onPressed,
+    this.child,
+    this.label,
     this.icon,
     this.variant = FDButtonVariant.filled,
     this.size = FDButtonSize.defaultSize,
     this.padding,
     super.key,
-  });
+  }) : assert(
+         label != null || child != null,
+         'Either label or child must be provided',
+       );
 
   /// @no-doc
   const FDButton.text({
-    required this.label,
     required this.onPressed,
+    this.child,
+    this.label,
     this.icon,
     this.variant = FDButtonVariant.text,
     this.size = FDButtonSize.defaultSize,
     this.padding,
     super.key,
-  });
+  }) : assert(
+         label != null || child != null,
+         'Either label or child must be provided',
+       );
 
   /// @no-doc
   const FDButton.tonal({
-    required this.label,
     required this.onPressed,
+    this.child,
+    this.label,
     this.icon,
     this.variant = FDButtonVariant.tonal,
     this.size = FDButtonSize.defaultSize,
     this.padding,
     super.key,
-  });
+  }) : assert(
+         label != null || child != null,
+         'Either label or child must be provided',
+       );
 
   /// @no-doc
-  final String label;
+  const FDButton.destructive({
+    required this.onPressed,
+    this.child,
+    this.label,
+    this.icon,
+    this.variant = FDButtonVariant.destructive,
+    this.size = FDButtonSize.defaultSize,
+    this.padding,
+    super.key,
+  }) : assert(
+         label != null || child != null,
+         'Either label or child must be provided',
+       );
+
+  /// @no-doc
+  final String? label;
+
+  /// @no-doc
+  final Widget? child;
 
   /// @no-doc
   final VoidCallback onPressed;
@@ -57,7 +86,7 @@ class FDButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = getVariantColors(context, variant: variant);
+    final colors = getFDButtonVariantColors(context, variant: variant);
 
     final style = styleFrom(
       context,
@@ -67,6 +96,15 @@ class FDButton extends StatelessWidget {
       backgroundColor: colors.backgroundColor,
     );
     final textTheme = Theme.of(context).textTheme;
+
+    final effectiveChild =
+        child ??
+        Text(
+          label!,
+          style: textTheme.labelLarge?.copyWith(
+            color: colors.foregroundColor,
+          ),
+        );
 
     return Container(
       color: Colors.transparent,
@@ -81,15 +119,10 @@ class FDButton extends StatelessWidget {
                 spacing: FlowinDesignSpace.space200,
                 children: [
                   icon!,
-                  Text(
-                    label,
-                    style: textTheme.labelLarge?.copyWith(
-                      color: colors.foregroundColor,
-                    ),
-                  ),
+                  effectiveChild,
                 ],
               )
-            : Text(label),
+            : effectiveChild,
       ),
     );
   }

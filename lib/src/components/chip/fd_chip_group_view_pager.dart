@@ -28,7 +28,7 @@ class FDChipGroupViewPager extends StatefulWidget {
   /// @no-doc
   const FDChipGroupViewPager({
     required this.items,
-    required this.chipFactory,
+    this.chipFactory,
     this.initialIndex = 0,
     this.controller,
     this.onIndexChanged,
@@ -57,7 +57,7 @@ class FDChipGroupViewPager extends StatefulWidget {
   final List<FDChipGroupViewPage> items;
 
   /// How to build the visual FdChip for each label.
-  final FdChipFactory chipFactory;
+  final FdChipFactory? chipFactory;
 
   /// Start selected page/chip.
   final int initialIndex;
@@ -169,8 +169,14 @@ class _FDChipGroupViewPagerState extends State<FDChipGroupViewPager> {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveChipFactory =
+        widget.chipFactory ??
+        (context, label) => FdChip(
+          child: Text(label, style: Theme.of(context).textTheme.labelSmall),
+        );
+
     final chips = widget.items
-        .map((it) => widget.chipFactory(context, it.label))
+        .map((it) => effectiveChipFactory.call(context, it.label))
         .toList(growable: false);
 
     return Column(

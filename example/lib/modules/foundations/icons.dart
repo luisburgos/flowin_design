@@ -11,9 +11,6 @@ class FoundationsIconsShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShowcaseCard(
       child: FDChipGroupViewPager(
-        chipFactory: (context, label) => FdChip(
-          child: Text(label, style: Theme.of(context).textTheme.labelSmall),
-        ),
         items: FDIcons.values.map((icon) {
           return FDChipGroupViewPage(
             label: icon.name.toUpperCase(),

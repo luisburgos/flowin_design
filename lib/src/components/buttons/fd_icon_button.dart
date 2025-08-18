@@ -1,6 +1,6 @@
 import 'package:flowin_design/src/components/buttons/fd_button_size.dart';
 import 'package:flowin_design/src/components/buttons/fd_button_utils.dart'
-    show getVariantColors;
+    show getFDButtonVariantColors;
 import 'package:flowin_design/src/components/buttons/fd_button_variant.dart';
 import 'package:flutter/material.dart';
 
@@ -86,7 +86,7 @@ class FDIconButton extends StatelessWidget {
     required FDButtonVariant variant,
     FDButtonSize size = FDButtonSize.defaultSize,
   }) {
-    final colors = getVariantColors(context, variant: variant);
+    final colors = getFDButtonVariantColors(context, variant: variant);
     return IconButton.styleFrom(
       padding: EdgeInsets.zero,
       shape: const CircleBorder(),

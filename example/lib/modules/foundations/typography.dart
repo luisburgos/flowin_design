@@ -13,9 +13,6 @@ class FoundationsTypographyShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShowcaseCard(
       child: FDChipGroupViewPager(
-        chipFactory: (context, label) => FdChip(
-          child: Text(label, style: Theme.of(context).textTheme.labelSmall),
-        ),
         items: [
           FDChipGroupViewPage(
             label: 'Baseline',
