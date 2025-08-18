@@ -17,7 +17,7 @@ class FlowinDesignSchemes {
     onTertiary: FlowinDesignColors.tertiary800,
     surface: FlowinDesignColors.white,
     onSurface: FlowinDesignColors.neutral800,
-    onSurfaceVariant: FlowinDesignColors.neutral500,
+    onSurfaceVariant: FlowinDesignColors.neutral400,
     inverseSurface: FlowinDesignColors.neutral700,
     onInverseSurface: FlowinDesignColors.white,
     shadow: FlowinDesignColors.neutral200,
