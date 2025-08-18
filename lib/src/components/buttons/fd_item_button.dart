@@ -16,6 +16,15 @@ class FDItemButton extends StatelessWidget {
   });
 
   /// @no-doc
+  const FDItemButton.destructive({
+    required this.label,
+    required this.onPressed,
+    this.icon,
+    this.variant = FDButtonVariant.destructive,
+    super.key,
+  });
+
+  /// @no-doc
   final String label;
 
   /// @no-doc

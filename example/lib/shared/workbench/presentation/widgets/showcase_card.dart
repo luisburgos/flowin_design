@@ -8,6 +8,8 @@ class ShowcaseCard extends StatelessWidget {
     required this.child,
     this.padding,
     this.margin,
+    this.backgroundColor,
+    this.cornerRadius,
     super.key,
   });
 
@@ -19,6 +21,12 @@ class ShowcaseCard extends StatelessWidget {
 
   /// @no-doc
   final EdgeInsets? margin;
+
+  /// @no-doc
+  final Color? backgroundColor;
+
+  /// @no-doc
+  final double? cornerRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +40,8 @@ class ShowcaseCard extends StatelessWidget {
           offset: const Offset(0, 2),
         ),
       ],
-      cornerRadius: FlowinDesignRadius.radius300,
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      cornerRadius: cornerRadius ?? FlowinDesignRadius.radius300,
+      backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
       child: child,
     );
   }

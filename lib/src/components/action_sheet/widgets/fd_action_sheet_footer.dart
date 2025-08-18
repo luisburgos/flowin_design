@@ -1,3 +1,4 @@
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -18,6 +19,7 @@ class FDActionSheetFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      spacing: FlowinDesignSpace.space300,
       children: [
         if (left != null)
           Expanded(

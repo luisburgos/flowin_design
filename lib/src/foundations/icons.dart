@@ -7,7 +7,8 @@ class FDIcon extends StatelessWidget {
   /// @no-doc
   const FDIcon({
     required this.icon,
-    this.size = FlowinDesignIconSize.md,
+    this.size = FlowinDesignIconSize.defaultSize,
+    this.color,
     super.key,
   });
 
@@ -17,10 +18,14 @@ class FDIcon extends StatelessWidget {
   /// @no-doc
   final FlowinDesignIconSize? size;
 
+  /// @no-doc
+  final Color? color;
+
   @override
   Widget build(BuildContext context) {
     return Icon(
       icon.iconData,
+      color: color,
       size: size?.value,
       weight: size?.stroke,
     );
@@ -87,8 +92,15 @@ enum FDIcons {
   spark;
 
   /// @no-doc
-  FDIcon toIcon({FlowinDesignIconSize? size}) {
-    return FDIcon(icon: this, size: size);
+  FDIcon toIcon({
+    FlowinDesignIconSize? size,
+    Color? color,
+  }) {
+    return FDIcon(
+      icon: this,
+      size: size,
+      color: color,
+    );
   }
 
   /// @no-doc
