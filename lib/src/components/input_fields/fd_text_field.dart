@@ -1,5 +1,6 @@
 import 'package:flowin_design/src/components/input_fields/fd_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// @no-doc
 class FDTextField extends StatelessWidget {
@@ -11,6 +12,7 @@ class FDTextField extends StatelessWidget {
     this.onChanged,
     this.autofocus = false,
     this.hintText,
+    this.inputFormatters,
     super.key,
   });
 
@@ -32,6 +34,9 @@ class FDTextField extends StatelessWidget {
   /// @no-doc
   final String? hintText;
 
+  /// @no-doc
+  final List<TextInputFormatter>? inputFormatters;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -46,6 +51,7 @@ class FDTextField extends StatelessWidget {
       label: label,
       child: TextFormField(
         autofocus: autofocus,
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
           hintText: hintText,
           border: InputBorder.none,
