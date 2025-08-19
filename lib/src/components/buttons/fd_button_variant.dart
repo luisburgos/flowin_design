@@ -10,5 +10,5 @@ enum FDButtonVariant {
   text,
 
   /// @no-doc
-  destructive;
+  destructive,
 }
