@@ -6,6 +6,13 @@
 
 Flowin Design Flutter Package
 
+### 🔧 Setup Git hooks (first time only)
+
+```bash
+chmod +x setup-git-hooks.sh
+./setup-git-hooks.sh
+```
+
 ## Installation 💻
 
 **❗ In order to start using Flowin Design you must have the [Flutter SDK][flutter_install_link] installed on your machine.**

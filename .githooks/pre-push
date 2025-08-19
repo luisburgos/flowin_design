@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Prevent push if any of these checks fail
+set -e
+
+echo "Running pre-push checks..."
+
+echo "Running flutter pub get..."
+fvm flutter pub get
+
+# 3. Run analyzer
+echo "Running flutter analyze..."
+fvm flutter analyze
+
+# 4. Run tests
+echo "Running flutter test..."
+fvm flutter test --coverage
+
+# 5. Optional: Enforce minimum coverage (edit as needed)
+COVERAGE_THRESHOLD=0
+ACTUAL_COVERAGE=$(lcov --summary coverage/lcov.info | grep -oE 'lines\.*: [0-9.]+%' | grep -oE '[0-9.]+' | cut -d. -f1)
+
+if (( ACTUAL_COVERAGE < COVERAGE_THRESHOLD )); then
+  echo "❌ Coverage $ACTUAL_COVERAGE% is below threshold of $COVERAGE_THRESHOLD%"
+  exit 1
+fi
+
+echo "✅  Test coverage check passed"
+
+echo "Running spell check on markdown files..."
+if ! command -v cspell &> /dev/null; then
+  echo "⚠️ cspell not found. Install it with 'npm install -g cspell'"
+  exit 1
+fi
+
+cspell --config .github/cspell.json "**/*.{dart,md,yaml}" --no-progress || {
+  echo "❌ Spelling issues found"
+  exit 1
+}
+
+echo "✅  Spell check passed"
+
+echo "Running dart format on lib and test folders..."
+fvm dart format --line-length 80 --set-exit-if-changed lib test
+echo "✅  Dart format passed"
+
+
+echo "✅  All pre-push checks passed. Proceeding with push."
+exit 0
