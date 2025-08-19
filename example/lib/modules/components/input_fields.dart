@@ -16,7 +16,7 @@ class InputFieldsComponentShowcase extends StatelessWidget {
           ),
           FDChipGroupViewPage(
             label: 'Color',
-            builder: (_) => _StoryContainer(child: FDColorPickerField()),
+            builder: (_) => _StoryContainer(child: _ColorPickers()),
           ),
         ],
       ),
@@ -70,6 +70,40 @@ class _TextFields extends StatelessWidget {
           initialValue: 'SPIKERS',
           hintText: 'Enter team name',
           autofocus: true,
+        ),
+      ],
+    );
+  }
+}
+
+class _ColorPickers extends StatelessWidget {
+  const _ColorPickers();
+
+  @override
+  Widget build(BuildContext context) {
+    final predefined = [
+      FlowinDesignColors.neutral200,
+      Colors.yellow,
+      Colors.green,
+      Colors.blue,
+      Colors.purple,
+      Colors.red,
+      Colors.black,
+    ];
+
+    return Column(
+      spacing: FlowinDesignSpace.space400,
+      children: [
+        FDColorPickerField(id: 'default', predefinedColors: predefined),
+        FDColorPickerField(
+          id: 'selected-custom',
+          selectedColor: Colors.red,
+          predefinedColors: predefined,
+        ),
+        FDColorPickerField(
+          id: 'selected-preset',
+          selectedColor: Colors.blue,
+          predefinedColors: predefined,
         ),
       ],
     );

@@ -13,6 +13,10 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.2.0
   google_fonts: ^6.3.0
+  ios_color_picker:
+    git:
+      url: https://github.com/luisburgos/ios_color_picker
+      ref: master
   lucide_icons_flutter: ^3.0.9
 
 dev_dependencies:
