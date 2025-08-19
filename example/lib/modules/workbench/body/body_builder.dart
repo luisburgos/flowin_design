@@ -5,6 +5,7 @@ import 'package:example/modules/components/cards.dart';
 import 'package:example/modules/components/chip_groups.dart';
 import 'package:example/modules/components/chips.dart';
 import 'package:example/modules/components/icon_buttons.dart';
+import 'package:example/modules/components/input_fields.dart';
 import 'package:example/modules/components/item_buttons.dart';
 import 'package:example/modules/components/tabs.dart';
 import 'package:example/modules/foundations/colors.dart';
@@ -65,13 +66,17 @@ class BodyBuilder extends StatelessWidget {
           return const CardsComponentShowcase();
         case ComponentsPaneOption.actionSheets:
           return const ActionSheetsComponentShowcase();
+        case ComponentsPaneOption.inputFields:
+          return const InputFieldsComponentShowcase();
       }
     }
 
     return Center(
       child: Text(
         state.sidebarItem?.label ?? 'No sidebar item',
-        style: Theme.of(context).textTheme.headlineMedium,
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
       ),
     );
   }

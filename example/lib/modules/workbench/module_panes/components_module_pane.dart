@@ -29,6 +29,9 @@ enum ComponentsPaneOption {
   cards,
 
   /// @no-doc
+  inputFields,
+
+  /// @no-doc
   buttons;
 
   /// Options NOT ready for production.
@@ -62,6 +65,8 @@ enum ComponentsPaneOption {
         return 'cards';
       case ComponentsPaneOption.actionSheets:
         return 'actionSheets';
+      case ComponentsPaneOption.inputFields:
+        return 'inputFields';
     }
   }
 
@@ -77,6 +82,7 @@ enum ComponentsPaneOption {
     if (id == 'itemButtons') return ComponentsPaneOption.itemButtons;
     if (id == 'cards') return ComponentsPaneOption.cards;
     if (id == 'actionSheets') return ComponentsPaneOption.actionSheets;
+    if (id == 'inputFields') return ComponentsPaneOption.inputFields;
     throw Exception('Invalid WidgetTreeModulePaneOption id: $id');
   }
 
@@ -104,6 +110,8 @@ enum ComponentsPaneOption {
         return 'Cards';
       case ComponentsPaneOption.actionSheets:
         return 'Action Sheets';
+      case ComponentsPaneOption.inputFields:
+        return 'Input Fields';
     }
   }
 
@@ -128,6 +136,8 @@ enum ComponentsPaneOption {
         return LucideIcons.cardSim;
       case ComponentsPaneOption.actionSheets:
         return LucideIcons.list;
+      case ComponentsPaneOption.inputFields:
+        return LucideIcons.text;
     }
   }
 }

@@ -13,5 +13,7 @@ export 'chip/fd_chip.dart';
 export 'chip/fd_chip_group.dart';
 export 'chip/fd_chip_group_view_pager.dart';
 export 'dividers/fd_divider.dart';
+export 'input_fields/fd_input_field.dart';
+export 'input_fields/fd_text_field.dart';
 export 'tabs/fd_tab_item.dart';
 export 'tabs/fd_tabs.dart';
