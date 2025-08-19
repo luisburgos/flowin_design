@@ -14,6 +14,10 @@ class InputFieldsComponentShowcase extends StatelessWidget {
             label: 'Text',
             builder: (_) => _StoryContainer(child: _TextFields()),
           ),
+          FDChipGroupViewPage(
+            label: 'Color',
+            builder: (_) => _StoryContainer(child: FDColorPickerField()),
+          ),
         ],
       ),
     );
