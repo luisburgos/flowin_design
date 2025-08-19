@@ -53,7 +53,9 @@ class EasyAppVersionReader {
     var currentVersion = packageInfo.version;
     if (withBuildNumber) {
       final buildNumber = packageInfo.buildNumber;
-      currentVersion += '+$buildNumber';
+      if (buildNumber.isNotEmpty) {
+        currentVersion += '+$buildNumber';
+      }
     }
     return currentVersion;
   }
