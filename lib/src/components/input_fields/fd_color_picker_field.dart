@@ -30,8 +30,7 @@ class FDColorPickerField extends StatefulWidget {
 }
 
 class _FDColorPickerFieldState extends State<FDColorPickerField> {
-  IOSColorPickerController iosColorPickerController =
-      IOSColorPickerController();
+  final _iosColorPickerController = IOSColorPickerController();
 
   Color? _selectedColor;
 
@@ -43,7 +42,7 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
 
   @override
   void dispose() {
-    iosColorPickerController.dispose();
+    _iosColorPickerController.dispose();
     super.dispose();
   }
 
@@ -64,7 +63,7 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
   }
 
   void _handleCustomColorTap(Color? selectedColor) {
-    iosColorPickerController.showIOSCustomColorPicker(
+    _iosColorPickerController.showIOSCustomColorPicker(
       startingColor: selectedColor,
       onColorChanged: _setSelectedColor,
       context: context,
@@ -72,6 +71,7 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
   }
 
   void _setSelectedColor(Color color) {
+    if (!mounted) return;
     setState(() {
       _selectedColor = color;
       widget.onColorChanged?.call(color);
@@ -114,12 +114,21 @@ class FDInlineColorPicker extends StatelessWidget {
       child: Row(
         spacing: FlowinDesignSpace.space400,
         children: [
-          GestureDetector(
-            onTap: onCustomColorTap,
-            child: FDColorRadialButton.gradient(
-              selected: isGradientSelected,
-              gapColor: gapColor,
-              color: selectedColor ?? Colors.transparent,
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              key: const ValueKey('fd-color-picker-gradient'),
+              onTap: onCustomColorTap,
+              child: Tooltip(
+                message: isGradientSelected
+                    ? 'Custom color selected'
+                    : 'Pick a custom color',
+                child: FDColorRadialButton.gradient(
+                  selected: isGradientSelected,
+                  gapColor: gapColor,
+                  color: selectedColor ?? Colors.transparent,
+                ),
+              ),
             ),
           ),
           Expanded(
