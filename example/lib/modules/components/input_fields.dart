@@ -88,22 +88,33 @@ class _ColorPickers extends StatelessWidget {
       Colors.blue,
       Colors.purple,
       Colors.red,
-      Colors.black,
     ];
 
     return Column(
       spacing: FlowinDesignSpace.space400,
       children: [
-        FDColorPickerField(id: 'default', predefinedColors: predefined),
+        FDColorPickerField(
+          id: 'default',
+          predefinedColors: predefined,
+          onColorChanged: (color) {
+            debugPrint('default.onColorChanged($color)');
+          },
+        ),
         FDColorPickerField(
           id: 'selected-custom',
-          selectedColor: Colors.red,
+          initialColor: Color(0xFF032203),
           predefinedColors: predefined,
+          onColorChanged: (color) {
+            debugPrint('selectedCustom.onColorChanged($color)');
+          },
         ),
         FDColorPickerField(
           id: 'selected-preset',
-          selectedColor: Colors.blue,
+          initialColor: Colors.blue,
           predefinedColors: predefined,
+          onColorChanged: (color) {
+            debugPrint('selectedPreset.onColorChanged($color)');
+          },
         ),
       ],
     );

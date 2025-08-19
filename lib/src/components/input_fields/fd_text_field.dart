@@ -42,9 +42,9 @@ class FDTextField extends StatelessWidget {
     );
 
     return FDInputField(
+      key: Key('fd-text-field-$id'),
       label: label,
       child: TextFormField(
-        key: Key('fd-text-field-$id'),
         autofocus: autofocus,
         decoration: InputDecoration(
           hintText: hintText,

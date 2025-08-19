@@ -13,6 +13,7 @@ export 'chip/fd_chip.dart';
 export 'chip/fd_chip_group.dart';
 export 'chip/fd_chip_group_view_pager.dart';
 export 'color_picker/fd_color_picker.dart';
+export 'color_picker/fd_color_radial_button.dart';
 export 'dividers/fd_divider.dart';
 export 'input_fields/fd_color_picker_field.dart';
 export 'input_fields/fd_input_field.dart';

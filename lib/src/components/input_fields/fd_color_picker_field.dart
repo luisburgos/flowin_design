@@ -8,7 +8,8 @@ class FDColorPickerField extends StatefulWidget {
   const FDColorPickerField({
     required this.id,
     required this.predefinedColors,
-    this.selectedColor,
+    this.initialColor,
+    this.onColorChanged,
     super.key,
   });
 
@@ -16,10 +17,13 @@ class FDColorPickerField extends StatefulWidget {
   final String id;
 
   /// @no-doc
-  final Color? selectedColor;
+  final Color? initialColor;
 
   /// @no-doc
   final List<Color> predefinedColors;
+
+  /// @no-doc
+  final void Function(Color)? onColorChanged;
 
   @override
   State<FDColorPickerField> createState() => _FDColorPickerFieldState();
@@ -29,6 +33,14 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
   IOSColorPickerController iosColorPickerController =
       IOSColorPickerController();
 
+  Color? _selectedColor;
+
+  @override
+  void initState() {
+    _selectedColor = widget.initialColor;
+    super.initState();
+  }
+
   @override
   void dispose() {
     iosColorPickerController.dispose();
@@ -37,27 +49,33 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = <Color>[
-      if (widget.selectedColor != null) widget.selectedColor!,
-      ...widget.predefinedColors,
-    ];
     return FDInputField(
+      key: Key('fd-color-picker-field-${widget.id}'),
       label: 'Color',
-      child: SizedBox(
-        height: FlowinDesignSpace.space1000,
-        child: FDInlineColorPicker(
-          key: Key('fd-color-picker-field-${widget.id}'),
-          colors: colors,
-          selectedColor: widget.selectedColor,
-          onCustomColorTap: () {
-            //_handleCustomColorTap(selectedColor)
-          },
-          onPredefinedColorTap: (color) {
-            //widget.onColorChanged(color);
-          },
-        ),
+      child: FDInlineColorPicker(
+        selectedColor: _selectedColor,
+        predefinedColors: widget.predefinedColors,
+        onCustomColorTap: () {
+          _handleCustomColorTap(_selectedColor);
+        },
+        onPredefinedColorTap: _setSelectedColor,
       ),
     );
+  }
+
+  void _handleCustomColorTap(Color? selectedColor) {
+    iosColorPickerController.showIOSCustomColorPicker(
+      startingColor: selectedColor,
+      onColorChanged: _setSelectedColor,
+      context: context,
+    );
+  }
+
+  void _setSelectedColor(Color color) {
+    setState(() {
+      _selectedColor = color;
+      widget.onColorChanged?.call(color);
+    });
   }
 }
 
@@ -65,7 +83,7 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
 class FDInlineColorPicker extends StatelessWidget {
   /// @no-doc
   const FDInlineColorPicker({
-    required this.colors,
+    required this.predefinedColors,
     required this.onCustomColorTap,
     required this.onPredefinedColorTap,
     this.selectedColor,
@@ -76,7 +94,7 @@ class FDInlineColorPicker extends StatelessWidget {
   final Color? selectedColor;
 
   /// @no-doc
-  final List<Color> colors;
+  final List<Color> predefinedColors;
 
   /// @no-doc
   final void Function() onCustomColorTap;
@@ -86,36 +104,47 @@ class FDInlineColorPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: colors.length,
-      separatorBuilder: (_, _) => const SizedBox(
-        width: FlowinDesignSpace.space400,
-      ),
-      itemBuilder: (context, index) {
-        final color = colors[index];
-        final isSelected = selectedColor == color;
-        const size = FlowinDesignSpace.space700;
-        final isFirst = index == 0;
+    final gapColor = Theme.of(context).colorScheme.surface;
+    final isSelectedFromPredefined = predefinedColors.contains(selectedColor);
+    final isGradientSelected =
+        selectedColor != null && !isSelectedFromPredefined;
 
-        return GestureDetector(
-          onTap: () {
-            if (isFirst) {
-              onCustomColorTap();
-            } else {
-              onPredefinedColorTap(color);
-            }
-          },
-          child: isFirst
-              ? FDGradientCircle(color: color, size: size)
-              : FDColorCircle(
-                  color: color,
-                  borderColor: Theme.of(context).colorScheme.primary,
-                  size: size,
-                  isSelected: isSelected,
-                ),
-        );
-      },
+    return SizedBox(
+      height: FlowinDesignSpace.space1000,
+      child: Row(
+        spacing: FlowinDesignSpace.space400,
+        children: [
+          GestureDetector(
+            onTap: onCustomColorTap,
+            child: FDColorRadialButton.gradient(
+              selected: isGradientSelected,
+              gapColor: gapColor,
+              color: selectedColor ?? Colors.transparent,
+            ),
+          ),
+          Expanded(
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: predefinedColors.length,
+              separatorBuilder: (context, index) {
+                return const SizedBox(width: FlowinDesignSpace.space400);
+              },
+              itemBuilder: (context, index) {
+                final predefinedColor = predefinedColors[index];
+
+                return GestureDetector(
+                  onTap: () => onPredefinedColorTap(predefinedColor),
+                  child: FDColorRadialButton(
+                    selected: selectedColor == predefinedColor,
+                    color: predefinedColor,
+                    gapColor: gapColor,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -47,23 +47,23 @@ class FDGradientCircle extends StatelessWidget {
           ],
         ),
       ),
-      child: Container(
+      /*child: Container(
         margin: const EdgeInsets.all(3),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: Theme.of(context).colorScheme.surface,
+          color: Colors.transparent,
         ),
         child: Container(
           margin: const EdgeInsets.all(3),
           child: FDColorCircle(
             color: color,
-            borderColor: Colors.transparent,
+            borderColor: Colors.greenAccent,
             size: size - 6,
             borderWidth: 0,
             isSelected: false,
           ),
         ),
-      ),
+      ),*/
     );
   }
 }
@@ -73,10 +73,9 @@ class FDColorCircle extends StatelessWidget {
   /// @no-doc
   const FDColorCircle({
     required this.color,
-    required this.borderColor,
     required this.size,
-    required this.isSelected,
-    this.borderWidth = FlowinDesignBorders.bold,
+    this.border,
+    this.isHollow = false,
     super.key,
   });
 
@@ -84,16 +83,13 @@ class FDColorCircle extends StatelessWidget {
   final Color color;
 
   /// @no-doc
-  final Color borderColor;
-
-  /// @no-doc
   final double size;
 
   /// @no-doc
-  final double borderWidth;
+  final Border? border;
 
   /// @no-doc
-  final bool isSelected;
+  final bool isHollow;
 
   @override
   Widget build(BuildContext context) {
@@ -101,13 +97,16 @@ class FDColorCircle extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: color,
+        color: isHollow ? Colors.transparent : color,
         shape: BoxShape.circle,
-        border: Border.all(
-          color: isSelected ? borderColor : Colors.transparent,
-          width: borderWidth,
-        ),
+        border: border,
       ),
+      child: isHollow
+          ? null
+          : FDColorCircle(
+              color: color,
+              size: size - FlowinDesignBorders.extraBold * 2,
+            ),
     );
   }
 }
