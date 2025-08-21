@@ -9,7 +9,7 @@ class FlowinBaselineTextTokens {
     fontSize: 24,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 32 / 24,
-    letterSpacing: -0.5,
+    letterSpacing: -0.05,
   );
 
   /// @no-doc
@@ -73,7 +73,7 @@ class FlowinBaselineTextTokens {
     fontSize: 12,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 12 / 12,
-    letterSpacing: 0.5,
+    letterSpacing: 0,
   );
 
   /// @no-doc

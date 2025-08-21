@@ -29,36 +29,6 @@ class FlowinDesignThemes {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,
       textTheme: baseTheme.textTheme,
-      cardTheme: CardThemeData(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(FlowinDesignRadius.radius300),
-        ),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(FlowinDesignRadius.radius300),
-        ),
-      ),
-      tabBarTheme: TabBarThemeData(
-        labelColor: colorScheme.primary,
-        unselectedLabelColor: colorScheme.onSurfaceVariant,
-      ),
-      /*textButtonTheme: TextButtonThemeData(
-        style: gDefaultButtonStyle,
-      ),
-      filledButtonTheme: FilledButtonThemeData(
-        style: gDefaultButtonStyle,
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: gDefaultButtonStyle,
-      ),
-      extensions: [
-        matchShareCardTheme(
-          colorScheme,
-          brightness,
-          baseTheme,
-        ),
-      ],*/
     );
   }
 }
