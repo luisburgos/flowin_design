@@ -52,7 +52,7 @@ class FDActionSheetHeader extends StatelessWidget {
           ? FDIconButton.tonal(
               size: FDButtonSize.xs,
               icon: FDIcons.x.toIcon(
-                size: FlowinDesignIconSize.xs,
+                size: FlowinDesignIconSize.sm,
               ),
               onPressed: () => onClose?.call(),
             )
@@ -110,20 +110,28 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ColoredBox(
       color: Colors.transparent,
-      padding: const EdgeInsets.only(
-        left: FlowinDesignSpace.space200,
-      ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: child,
+            child: Container(
+              color: Colors.transparent,
+              padding: const EdgeInsets.symmetric(
+                horizontal: FlowinDesignSpace.space200,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: child,
+              ),
             ),
           ),
-          if (trailing != null) trailing!,
+          if (trailing != null)
+            ColoredBox(
+              color: Colors.transparent,
+              child: trailing,
+            ),
         ],
       ),
     );

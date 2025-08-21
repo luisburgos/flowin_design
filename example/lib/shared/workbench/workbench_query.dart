@@ -43,10 +43,7 @@ class WorkbenchQuery {
 
   /// @no-doc
   Uri toUri(String path) {
-    return Uri(
-      path: path,
-      queryParameters: toMap(),
-    );
+    return Uri(path: path, queryParameters: toMap());
   }
 
   @override

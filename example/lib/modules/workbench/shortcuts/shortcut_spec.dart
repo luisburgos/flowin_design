@@ -20,8 +20,6 @@ class ShortcutSpec {
   final Intent intent;
 
   /// Converts the spec into the map entry used by `Shortcuts`.
-  MapEntry<LogicalKeySet, Intent> toEntry() => MapEntry(
-        LogicalKeySet.fromSet({...modifiers, key}),
-        intent,
-      );
+  MapEntry<LogicalKeySet, Intent> toEntry() =>
+      MapEntry(LogicalKeySet.fromSet({...modifiers, key}), intent);
 }

@@ -13,6 +13,7 @@ class ActionSheetsComponentShowcase extends StatelessWidget {
       'Default': _DefaultActionSheet(),
       'Menu': _MenuActionSheet(),
       'Custom': _CustomBody(),
+      'ExpandedBody': _ExpandedBody(),
     };
     return ShowcaseCard(
       child: Column(
@@ -49,26 +50,7 @@ class _DefaultActionSheet extends StatelessWidget {
       subtitle:
           'Write something in here that gives clear '
           'directions to the user',
-      footer: Row(
-        spacing: FlowinDesignSpace.space300,
-        children: [
-          Expanded(
-            child: FDButton.tonal(
-              label: 'Label',
-              size: FDButtonSize.md,
-              onPressed: () {},
-            ),
-          ),
-          Expanded(
-            child: FDButton(
-              label: 'Label',
-              icon: FDIcons.board.toIcon(size: FlowinDesignIconSize.sm),
-              size: FDButtonSize.md,
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
+      footer: _FakeFooterDefault(),
     );
   }
 }
@@ -96,6 +78,23 @@ class _CustomBody extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ExpandedBody extends StatelessWidget {
+  const _ExpandedBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return FDActionSheet(
+      title: 'Expanded Body',
+      onClose: () {
+        context.popDefaultActionSheet();
+      },
+      bodyPadding: EdgeInsets.zero,
+      body: _FakeBody('Body', height: 200, cornerRadius: 0),
+      footer: _FakeFooterDefault(),
     );
   }
 }
@@ -134,16 +133,45 @@ class _MenuActionSheet extends StatelessWidget {
   }
 }
 
+class _FakeFooterDefault extends StatelessWidget {
+  const _FakeFooterDefault();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: FlowinDesignSpace.space300,
+      children: [
+        Expanded(
+          child: FDButton.tonal(
+            label: 'Label',
+            size: FDButtonSize.md,
+            onPressed: () {},
+          ),
+        ),
+        Expanded(
+          child: FDButton(
+            label: 'Label',
+            icon: FDIcons.board.toIcon(size: FlowinDesignIconSize.sm),
+            size: FDButtonSize.md,
+            onPressed: () {},
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _FakeBody extends StatelessWidget {
-  const _FakeBody(this.text, {required this.height});
+  const _FakeBody(this.text, {required this.height, this.cornerRadius});
 
   final String text;
   final double height;
+  final double? cornerRadius;
 
   @override
   Widget build(BuildContext context) {
     return FDCard(
-      cornerRadius: FlowinDesignRadius.radius500,
+      cornerRadius: cornerRadius ?? FlowinDesignRadius.radius500,
       child: SizedBox(
         height: height,
         child: Center(child: Text(text)),
@@ -153,6 +181,6 @@ class _FakeBody extends StatelessWidget {
 }
 
 Widget _getHeaderIcon(BuildContext context) => FDIcons.scanFace.toIcon(
-  size: FlowinDesignIconSize.xl,
+  size: FlowinDesignIconSize.xxl,
   color: Theme.of(context).colorScheme.onSurfaceVariant,
 );
