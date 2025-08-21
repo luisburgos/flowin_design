@@ -1,49 +1,99 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# .git/hooks/pre-push
+set -euo pipefail
 
-# Prevent push if any of these checks fail
-set -e
+LINE_LEN=80
+COVERAGE_THRESHOLD=0
+
+# Pretty error if anything fails
+trap 'echo "❌ Pre-push checks failed (line $LINENO)"; exit 1' ERR
+
+has_cmd() { command -v "$1" >/dev/null 2>&1; }
+
+format_if_present() {
+  local dir="$1"
+  local -a paths=()
+  [[ -d "$dir/lib"  ]] && paths+=("$dir/lib")
+  [[ -d "$dir/test" ]] && paths+=("$dir/test")
+  if ((${#paths[@]})); then
+    fvm dart format --line-length "$LINE_LEN" --set-exit-if-changed "${paths[@]}"
+  else
+    echo "ℹ️  No lib/ or test/ in $dir; skipping format."
+  fi
+}
+
+run_flutter_checks() {
+  local dir="$1"        # "." or "example"
+  local with_coverage="${2:-false}"
+
+  echo "━━━ 🔎 Running checks in: $dir ━━━"
+  (
+    cd "$dir"
+    echo "• flutter pub get"
+    fvm flutter pub get
+
+    echo "• flutter analyze"
+    fvm flutter analyze
+
+    echo "• flutter test${with_coverage:+ (with coverage)}"
+    if [[ "$with_coverage" == "true" ]]; then
+      fvm flutter test --coverage
+    else
+      fvm flutter test
+    fi
+  )
+
+  echo "• dart format (lib/, test/)"
+  format_if_present "$dir"
+
+  # Optional coverage gate (root only by default)
+  if [[ "$with_coverage" == "true" ]]; then
+    if ! has_cmd lcov; then
+      echo "⚠️  lcov not found; skipping coverage threshold check."
+    else
+      if [[ -f "$dir/coverage/lcov.info" ]]; then
+        local pct
+        pct=$(lcov --summary "$dir/coverage/lcov.info" | grep -oE 'lines\.*: [0-9.]+%' | grep -oE '[0-9.]+' | cut -d. -f1 || echo 0)
+        if (( pct < COVERAGE_THRESHOLD )); then
+          echo "❌ Coverage ${pct}% is below threshold of ${COVERAGE_THRESHOLD}%"
+          exit 1
+        fi
+        echo "✅  Coverage check passed (${pct}% ≥ ${COVERAGE_THRESHOLD}%)"
+      else
+        echo "⚠️  No lcov.info at $dir/coverage/lcov.info; skipping coverage threshold check."
+      fi
+    fi
+  fi
+
+  echo "✅  Checks passed in: $dir"
+}
 
 echo "Running pre-push checks..."
 
-echo "Running flutter pub get..."
-fvm flutter pub get
+# 1) Root package (with coverage + spellcheck)
+run_flutter_checks "." true
 
-# 3. Run analyzer
-echo "Running flutter analyze..."
-fvm flutter analyze
-
-# 4. Run tests
-echo "Running flutter test..."
-fvm flutter test --coverage
-
-# 5. Optional: Enforce minimum coverage (edit as needed)
-COVERAGE_THRESHOLD=0
-ACTUAL_COVERAGE=$(lcov --summary coverage/lcov.info | grep -oE 'lines\.*: [0-9.]+%' | grep -oE '[0-9.]+' | cut -d. -f1)
-
-if (( ACTUAL_COVERAGE < COVERAGE_THRESHOLD )); then
-  echo "❌ Coverage $ACTUAL_COVERAGE% is below threshold of $COVERAGE_THRESHOLD%"
+echo "• spell check (root)"
+if ! has_cmd cspell; then
+  echo "⚠️  cspell not found. Install with: npm install -g cspell"
   exit 1
 fi
-
-echo "✅  Test coverage check passed"
-
-echo "Running spell check on markdown files..."
-if ! command -v cspell &> /dev/null; then
-  echo "⚠️ cspell not found. Install it with 'npm install -g cspell'"
-  exit 1
-fi
-
-cspell --config .github/cspell.json "**/*.{dart,md,yaml}" --no-progress || {
-  echo "❌ Spelling issues found"
-  exit 1
-}
-
+# Respect .gitignore and avoid noisy folders if you have them
+cspell --config .github/cspell.json \
+  --no-progress \
+  --gitignore \
+  "**/*.{dart,md,yaml}" || {
+    echo "❌ Spelling issues found"
+    exit 1
+  }
 echo "✅  Spell check passed"
 
-echo "Running dart format on lib and test folders..."
-fvm dart format --line-length 80 --set-exit-if-changed lib test
-echo "✅  Dart format passed"
-
+# 2) Example package (if present)
+if [[ -d "example" ]]; then
+  run_flutter_checks "example" false
+else
+  echo "ℹ️  No example/ directory found; skipping example checks."
+fi
 
 echo "✅  All pre-push checks passed. Proceeding with push."
 exit 0
