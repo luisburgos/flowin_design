@@ -42,6 +42,13 @@ class FDAppBar extends StatelessWidget {
       ),
       child: Stack(
         children: [
+          if (footer != null)
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: footer!,
+            ),
           Container(
             color: Colors.transparent,
             padding: const EdgeInsets.only(
@@ -79,13 +86,6 @@ class FDAppBar extends StatelessWidget {
               ],
             ),
           ),
-          if (footer != null)
-            Positioned(
-              bottom: 0,
-              right: 0,
-              left: 0,
-              child: footer!,
-            ),
         ],
       ),
     );

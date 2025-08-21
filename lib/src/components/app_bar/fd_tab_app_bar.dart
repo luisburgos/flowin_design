@@ -37,8 +37,8 @@ class FDTabAppBar extends StatelessWidget {
       leading: leading,
       trailing: trailing,
       footer: Divider(
-        height: 1,
-        thickness: 0.9,
+        height: FlowinDesignBorders.regular,
+        thickness: FlowinDesignBorders.regular,
         color: effectiveDividerColor,
       ),
       child: FDTabs(
