@@ -28,9 +28,7 @@ class WorkbenchBody extends StatelessWidget {
     return Row(
       children: [
         modulePane,
-        Expanded(
-          child: child,
-        ),
+        Expanded(child: child),
         propertyPane,
         agentChatPane,
       ],

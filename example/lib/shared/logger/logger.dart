@@ -28,7 +28,7 @@ enum LogLevel {
   warning,
 
   /// @no-doc
-  error
+  error,
 }
 
 /// Singleton Logger
@@ -76,11 +76,7 @@ class Logger {
     _logErrorInternal(message, error, stackTrace, tag: tag);
   }
 
-  void _logInternal(
-    String message, {
-    required LogLevel level,
-    String? tag,
-  }) {
+  void _logInternal(String message, {required LogLevel level, String? tag}) {
     developer.log(message, name: tag ?? 'APP');
     for (final sink in _externalSinks) {
       sink.log(message, tag: tag, level: level);
