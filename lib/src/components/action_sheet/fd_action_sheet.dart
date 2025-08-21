@@ -14,6 +14,7 @@ class FDActionSheet extends StatelessWidget {
     this.footer,
     this.onClose,
     this.margin,
+    this.bodyPadding,
     super.key,
   });
 
@@ -41,6 +42,9 @@ class FDActionSheet extends StatelessWidget {
   ///@no-doc
   final EdgeInsets? margin;
 
+  ///@no-doc
+  final EdgeInsets? bodyPadding;
+
   @override
   Widget build(BuildContext context) {
     return FDCard(
@@ -54,30 +58,48 @@ class FDActionSheet extends StatelessWidget {
           ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       cornerRadius: FlowinDesignRadius.radius1000,
-      padding: const EdgeInsets.all(FlowinDesignSpace.space600),
+      padding: const EdgeInsets.only(
+        bottom: FlowinDesignSpace.space600,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         spacing: FlowinDesignSpace.space400,
         children: [
-          FDActionSheetHeader(
-            title: title,
-            subtitle: subtitle,
-            displayClose: displayClose,
-            icon: headerIcon,
-            onClose:
-                onClose ??
-                () {
-                  context.popDefaultActionSheet();
-                },
+          Padding(
+            padding: const EdgeInsets.only(
+              top: FlowinDesignSpace.space600,
+              left: FlowinDesignSpace.space600,
+              right: FlowinDesignSpace.space600,
+            ),
+            child: FDActionSheetHeader(
+              title: title,
+              subtitle: subtitle,
+              displayClose: displayClose,
+              icon: headerIcon,
+              onClose:
+                  onClose ??
+                  () {
+                    context.popDefaultActionSheet();
+                  },
+            ),
           ),
           if (body != null)
-            ColoredBox(
+            Container(
               color: Colors.transparent,
+              padding:
+                  bodyPadding ??
+                  const EdgeInsets.symmetric(
+                    horizontal: FlowinDesignSpace.space600,
+                  ),
               child: body,
             ),
           if (footer != null) ...[
-            ColoredBox(
+            Container(
               color: Colors.transparent,
+              padding: const EdgeInsets.only(
+                left: FlowinDesignSpace.space600,
+                right: FlowinDesignSpace.space600,
+              ),
               child: footer,
             ),
           ],
