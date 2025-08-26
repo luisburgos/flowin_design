@@ -15,12 +15,28 @@ class TabsComponentShowcase extends StatelessWidget {
         spacing: FlowinDesignSpace.space400,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
+          Container(
+            color: Theme.of(context).colorScheme.outlineVariant,
             width: 400,
             child: FDDefaultTestTabController(
               builder: (controller, tabs) {
                 return FDTabs(controller: controller, tabs: tabs);
               },
+            ),
+          ),
+          Container(
+            color: Theme.of(context).colorScheme.outlineVariant,
+            width: 400,
+            child: SizedBox(
+              child: FDDefaultTestTabController(
+                builder: (controller, tabs) {
+                  return FDTabs(
+                    controller: controller,
+                    tabs: tabs,
+                    itemHeight: 40,
+                  );
+                },
+              ),
             ),
           ),
         ],

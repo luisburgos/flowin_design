@@ -1,5 +1,8 @@
-import 'package:flowin_design/src/components/tabs/fd_tab_item.dart';
+import 'package:flowin_design/flowin_design.dart';
 import 'package:flutter/material.dart';
+
+/// @no-doc
+const double fdDefaultTabItemHeight = FlowinDesignSpace.space1400;
 
 /// @no-doc
 class FDTabs extends StatelessWidget {
@@ -7,6 +10,7 @@ class FDTabs extends StatelessWidget {
   const FDTabs({
     required this.controller,
     required this.tabs,
+    this.itemHeight,
     super.key,
   });
 
@@ -16,23 +20,32 @@ class FDTabs extends StatelessWidget {
   /// @no-doc
   final List<Widget> tabs;
 
+  /// @no-doc
+  final double? itemHeight;
+
   @override
   Widget build(BuildContext context) {
-    return TabBar(
-      controller: controller,
-      indicatorSize: TabBarIndicatorSize.tab,
-      dividerColor: Colors.transparent,
-      tabs: tabs
-          .map(
-            (tab) => tab is FDTabItem
-                ? FDTabItem(
-                    index: tab.index,
-                    title: tab.title,
-                    icon: tab.icon,
-                  )
-                : tab,
-          )
-          .toList(),
+    final effectiveHeight = itemHeight ?? fdDefaultTabItemHeight;
+
+    return PreferredSize(
+      preferredSize: Size.fromHeight(effectiveHeight),
+      child: TabBar(
+        controller: controller,
+        indicatorSize: TabBarIndicatorSize.tab,
+        dividerColor: Colors.transparent,
+        tabs: tabs
+            .map(
+              (tab) => tab is FDTabItem
+                  ? FDTabItem(
+                      height: effectiveHeight,
+                      index: tab.index,
+                      title: tab.title,
+                      icon: tab.icon,
+                    )
+                  : tab,
+            )
+            .toList(),
+      ),
     );
   }
 }

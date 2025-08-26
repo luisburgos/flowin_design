@@ -7,13 +7,13 @@ class FDTabItem extends StatelessWidget {
     required this.index,
     required this.title,
     required this.icon,
-    this.height = 56,
+    this.height,
     super.key,
   });
 
   // TODO(luis): extract to theme
   /// @no-doc
-  final double height;
+  final double? height;
 
   /// @no-doc
   final int index;
