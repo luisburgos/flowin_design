@@ -57,7 +57,9 @@ class FDActionSheet extends StatelessWidget {
             right: FlowinDesignSpace.space400,
           ),
       backgroundColor: Theme.of(context).colorScheme.surface,
-      cornerRadius: FlowinDesignRadius.radius1000,
+      borderRadius: const FDCardBorderRadius.all(
+        FlowinDesignRadius.radius1000,
+      ),
       padding: const EdgeInsets.only(
         bottom: FlowinDesignSpace.space600,
       ),

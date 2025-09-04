@@ -40,7 +40,9 @@ class ShowcaseCard extends StatelessWidget {
           offset: const Offset(0, 2),
         ),
       ],
-      cornerRadius: cornerRadius ?? FlowinDesignRadius.radius300,
+      borderRadius: FDCardBorderRadius.all(
+        cornerRadius ?? FlowinDesignRadius.radius300,
+      ),
       backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.surface,
       child: child,
     );

@@ -16,13 +16,37 @@ class CardsComponentShowcase extends StatelessWidget {
         children: [
           FDCard(
             size: Size.square(FlowinDesignSpace.space4000),
-            cornerRadius: FlowinDesignRadius.radius800,
+            borderRadius: FDCardBorderRadius.all(FlowinDesignRadius.radius800),
             child: Center(child: Text('Large')),
           ),
           FDCard(
             size: Size.square(FlowinDesignSpace.space2400),
-            cornerRadius: FlowinDesignRadius.radius500,
+            borderRadius: FDCardBorderRadius.all(FlowinDesignRadius.radius500),
             child: Center(child: Text('Small')),
+          ),
+          FDCard(
+            size: Size.square(FlowinDesignSpace.space4000),
+            borderRadius: FDCardBorderRadius(
+              topLeft: FlowinDesignRadius.radius800,
+              topRight: 0,
+              bottomLeft: FlowinDesignRadius.radius800,
+              bottomRight: 0,
+            ),
+            child: Center(
+              child: Text('Large Custom', textAlign: TextAlign.center),
+            ),
+          ),
+          FDCard(
+            size: Size.square(FlowinDesignSpace.space2400),
+            borderRadius: FDCardBorderRadius(
+              topLeft: FlowinDesignRadius.radius500,
+              topRight: FlowinDesignRadius.radius500,
+              bottomLeft: 0,
+              bottomRight: 0,
+            ),
+            child: Center(
+              child: Text('Small Custom', textAlign: TextAlign.center),
+            ),
           ),
         ],
       ),
