@@ -29,7 +29,7 @@ class FDInputField extends StatelessWidget {
     const minHeight = FlowinDesignSpace.space1000;
 
     return FDCard(
-      cornerRadius: FlowinDesignRadius.radius400,
+      borderRadius: const FDCardBorderRadius.all(FlowinDesignRadius.radius400),
       backgroundColor: Colors.transparent,
       borderSide: BorderSide(color: borderColor),
       padding: const EdgeInsets.symmetric(

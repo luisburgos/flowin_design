@@ -171,7 +171,9 @@ class _FakeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FDCard(
-      cornerRadius: cornerRadius ?? FlowinDesignRadius.radius500,
+      borderRadius: FDCardBorderRadius.all(
+        cornerRadius ?? FlowinDesignRadius.radius500,
+      ),
       child: SizedBox(
         height: height,
         child: Center(child: Text(text)),
