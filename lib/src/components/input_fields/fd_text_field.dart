@@ -14,6 +14,7 @@ class FDTextField extends StatelessWidget {
     this.hintText,
     this.inputFormatters,
     this.maxLines = fdTextFieldMaxLines,
+    this.labelWidth,
     super.key,
   });
 
@@ -39,6 +40,9 @@ class FDTextField extends StatelessWidget {
   final int maxLines;
 
   /// @no-doc
+  final double? labelWidth;
+
+  /// @no-doc
   final List<TextInputFormatter>? inputFormatters;
 
   @override
@@ -53,6 +57,7 @@ class FDTextField extends StatelessWidget {
     return FDInputField(
       key: Key('fd-text-field-$id'),
       label: label,
+      labelWidth: labelWidth,
       child: TextFormField(
         initialValue: initialValue,
         onChanged: onChanged,

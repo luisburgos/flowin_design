@@ -18,7 +18,7 @@ class FDInputField extends StatelessWidget {
   final Widget child;
 
   /// @no-doc
-  final double labelWidth;
+  final double? labelWidth;
 
   @override
   Widget build(BuildContext context) {
