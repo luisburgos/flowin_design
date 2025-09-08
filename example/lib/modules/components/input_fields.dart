@@ -136,6 +136,15 @@ class _ColorPickers extends StatelessWidget {
             debugPrint('selectedPreset.onColorChanged($color)');
           },
         ),
+        FDColorPickerField(
+          id: 'custom-label',
+          label: 'Farbe',
+          initialColor: Colors.greenAccent,
+          predefinedColors: predefined,
+          onColorChanged: (color) {
+            debugPrint('customLabel.onColorChanged($color)');
+          },
+        ),
       ],
     );
   }
