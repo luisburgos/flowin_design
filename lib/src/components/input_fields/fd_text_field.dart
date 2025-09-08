@@ -1,4 +1,4 @@
-import 'package:flowin_design/src/components/input_fields/fd_input_field.dart';
+import 'package:flowin_design/src/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,6 +13,7 @@ class FDTextField extends StatelessWidget {
     this.autofocus = false,
     this.hintText,
     this.inputFormatters,
+    this.maxLines = fdTextFieldMaxLines,
     super.key,
   });
 
@@ -35,6 +36,9 @@ class FDTextField extends StatelessWidget {
   final String? hintText;
 
   /// @no-doc
+  final int maxLines;
+
+  /// @no-doc
   final List<TextInputFormatter>? inputFormatters;
 
   @override
@@ -50,15 +54,16 @@ class FDTextField extends StatelessWidget {
       key: Key('fd-text-field-$id'),
       label: label,
       child: TextFormField(
-        autofocus: autofocus,
-        inputFormatters: inputFormatters,
-        decoration: InputDecoration(
-          hintText: hintText,
-          border: InputBorder.none,
-          hintStyle: hintTextStyle,
-        ),
-        onChanged: onChanged,
         initialValue: initialValue,
+        onChanged: onChanged,
+        autofocus: autofocus,
+        maxLines: maxLines,
+        inputFormatters: inputFormatters,
+        decoration: InputDecoration.collapsed(
+          hintText: hintText,
+          hintStyle: hintTextStyle,
+          fillColor: Colors.blueAccent.shade100,
+        ),
       ),
     );
   }

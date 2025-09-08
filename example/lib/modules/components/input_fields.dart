@@ -18,6 +18,10 @@ class InputFieldsComponentShowcase extends StatelessWidget {
             label: 'Color',
             builder: (_) => _StoryContainer(child: _ColorPickers()),
           ),
+          FDChipGroupViewPage(
+            label: 'Combined',
+            builder: (_) => _StoryContainer(child: _CombinedFields()),
+          ),
         ],
       ),
     );
@@ -71,25 +75,41 @@ class _TextFields extends StatelessWidget {
           hintText: 'Enter team name',
           autofocus: true,
         ),
+        FDTextField(
+          id: 'name-focused',
+          label: 'LONG LABELED FIELD',
+          onChanged: (value) {},
+          initialValue: 'SPIKERS',
+          hintText: 'Enter team name',
+          autofocus: true,
+        ),
+        FDTextField(
+          id: 'name-focused',
+          label: 'FF',
+          onChanged: (value) {},
+          initialValue: 'SPIKERS',
+          hintText: 'Enter team name',
+          autofocus: true,
+        ),
       ],
     );
   }
 }
+
+final predefined = [
+  FlowinDesignColors.neutral200,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+  Colors.purple,
+  Colors.red,
+];
 
 class _ColorPickers extends StatelessWidget {
   const _ColorPickers();
 
   @override
   Widget build(BuildContext context) {
-    final predefined = [
-      FlowinDesignColors.neutral200,
-      Colors.yellow,
-      Colors.green,
-      Colors.blue,
-      Colors.purple,
-      Colors.red,
-    ];
-
     return Column(
       spacing: FlowinDesignSpace.space400,
       children: [
@@ -114,6 +134,32 @@ class _ColorPickers extends StatelessWidget {
           predefinedColors: predefined,
           onColorChanged: (color) {
             debugPrint('selectedPreset.onColorChanged($color)');
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _CombinedFields extends StatelessWidget {
+  const _CombinedFields();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: FlowinDesignSpace.space400,
+      children: [
+        FDTextField(
+          id: 'name-empty',
+          label: 'Name',
+          onChanged: (value) {},
+          hintText: 'Enter team name',
+        ),
+        FDColorPickerField(
+          id: 'default',
+          predefinedColors: predefined,
+          onColorChanged: (color) {
+            debugPrint('default.onColorChanged($color)');
           },
         ),
       ],

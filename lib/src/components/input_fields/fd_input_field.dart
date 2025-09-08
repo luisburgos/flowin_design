@@ -7,6 +7,7 @@ class FDInputField extends StatelessWidget {
   const FDInputField({
     required this.label,
     required this.child,
+    this.labelWidth = fdInputFieldLabelWidth,
     super.key,
   });
 
@@ -15,6 +16,9 @@ class FDInputField extends StatelessWidget {
 
   /// @no-doc
   final Widget child;
+
+  /// @no-doc
+  final double labelWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +30,33 @@ class FDInputField extends StatelessWidget {
     final labelTextStyle = textTheme.labelMedium?.copyWith(
       color: colorScheme.onSurface,
     );
-    const minHeight = FlowinDesignSpace.space1000;
 
     return FDCard(
-      borderRadius: const FDCardBorderRadius.all(FlowinDesignRadius.radius400),
+      borderRadius: const FDCardBorderRadius.all(
+        FlowinDesignRadius.radius400,
+      ),
+      size: const Size.fromHeight(fdInputFieldMinHeight),
       backgroundColor: Colors.transparent,
       borderSide: BorderSide(color: borderColor),
       padding: const EdgeInsets.symmetric(
         vertical: FlowinDesignSpace.space300,
         horizontal: FlowinDesignSpace.space400,
       ),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: minHeight),
+      child: SizedBox(
+        height: fdInputFieldContentMaxHeight,
         child: Row(
           spacing: FlowinDesignSpace.space250,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(label, style: labelTextStyle),
             SizedBox(
-              height: minHeight,
-              child: FDVerticalDivider(color: borderColor),
+              width: labelWidth,
+              child: Text(
+                label,
+                style: labelTextStyle,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
+            FDVerticalDivider(color: borderColor),
             Expanded(
               child: child,
             ),
