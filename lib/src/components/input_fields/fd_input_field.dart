@@ -7,7 +7,7 @@ class FDInputField extends StatelessWidget {
   const FDInputField({
     required this.label,
     required this.child,
-    this.labelWidth = fdInputFieldLabelWidth,
+    this.labelDecoration,
     super.key,
   });
 
@@ -18,7 +18,7 @@ class FDInputField extends StatelessWidget {
   final Widget child;
 
   /// @no-doc
-  final double? labelWidth;
+  final FDInputFieldLabelDecoration? labelDecoration;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +29,11 @@ class FDInputField extends StatelessWidget {
     final borderColor = colorScheme.outlineVariant;
     final labelTextStyle = textTheme.labelMedium?.copyWith(
       color: colorScheme.onSurface,
+    );
+
+    final effectiveLabelDecoration = FDInputFieldLabelDecoration(
+      textAlign: labelDecoration?.textAlign ?? TextAlign.center,
+      width: labelDecoration?.width ?? fdInputFieldLabelWidth,
     );
 
     return FDCard(
@@ -49,9 +54,10 @@ class FDInputField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: labelWidth,
+              width: effectiveLabelDecoration.width,
               child: Text(
                 label,
+                textAlign: effectiveLabelDecoration.textAlign,
                 style: labelTextStyle,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -63,6 +69,32 @@ class FDInputField extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// @no-doc
+class FDInputFieldLabelDecoration {
+  /// @no-doc
+  const FDInputFieldLabelDecoration({
+    required this.textAlign,
+    required this.width,
+  });
+
+  /// @no-doc
+  final TextAlign? textAlign;
+
+  /// @no-doc
+  final double? width;
+
+  /// @no-doc
+  FDInputFieldLabelDecoration copyWith({
+    TextAlign? textAlign,
+    double? width,
+  }) {
+    return FDInputFieldLabelDecoration(
+      textAlign: textAlign,
+      width: width,
     );
   }
 }

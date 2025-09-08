@@ -4,7 +4,7 @@ import 'package:flowin_design/flowin_design.dart';
 const double fdInputFieldMinHeight = FlowinDesignSpace.space1600;
 
 /// @no-doc
-const double fdInputFieldLabelWidth = FlowinDesignSpace.space1000;
+const double fdInputFieldLabelWidth = FlowinDesignSpace.space1400;
 
 /// @no-doc
 const double fdInputFieldContentMaxHeight = FlowinDesignSpace.space1000;

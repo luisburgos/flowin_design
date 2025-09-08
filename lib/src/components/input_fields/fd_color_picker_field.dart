@@ -11,7 +11,7 @@ class FDColorPickerField extends StatefulWidget {
     this.label,
     this.initialColor,
     this.onColorChanged,
-    this.labelWidth,
+    this.labelDecoration,
     super.key,
   });
 
@@ -25,7 +25,7 @@ class FDColorPickerField extends StatefulWidget {
   final String? label;
 
   /// @no-doc
-  final double? labelWidth;
+  final FDInputFieldLabelDecoration? labelDecoration;
 
   /// @no-doc
   final List<Color> predefinedColors;
@@ -59,7 +59,7 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
     return FDInputField(
       key: Key('fd-color-picker-field-${widget.id}'),
       label: widget.label ?? 'Color',
-      labelWidth: widget.labelWidth,
+      labelDecoration: widget.labelDecoration,
       child: FDInlineColorPicker(
         selectedColor: _selectedColor,
         predefinedColors: widget.predefinedColors,

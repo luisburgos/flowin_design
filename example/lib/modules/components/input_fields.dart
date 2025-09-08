@@ -69,7 +69,7 @@ class _TextFields extends StatelessWidget {
         ),
         FDTextField(
           id: 'name-focused',
-          label: 'Name',
+          label: 'Nombre',
           onChanged: (value) {},
           initialValue: 'SPIKERS',
           hintText: 'Enter team name',
@@ -102,7 +102,7 @@ final predefined = [
   Colors.green,
   Colors.blue,
   Colors.purple,
-  Colors.red,
+  //Colors.red,
 ];
 
 class _ColorPickers extends StatelessWidget {
