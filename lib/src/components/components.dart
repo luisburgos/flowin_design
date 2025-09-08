@@ -16,6 +16,7 @@ export 'color_picker/fd_color_radial_button.dart';
 export 'dividers/fd_divider.dart';
 export 'input_fields/fd_color_picker_field.dart';
 export 'input_fields/fd_input_field.dart';
+export 'input_fields/fd_input_field_constants.dart';
 export 'input_fields/fd_text_field.dart';
 export 'tabs/fd_tab_item.dart';
 export 'tabs/fd_tabs.dart';
