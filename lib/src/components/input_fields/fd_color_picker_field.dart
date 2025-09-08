@@ -8,6 +8,7 @@ class FDColorPickerField extends StatefulWidget {
   const FDColorPickerField({
     required this.id,
     required this.predefinedColors,
+    this.label,
     this.initialColor,
     this.onColorChanged,
     super.key,
@@ -18,6 +19,9 @@ class FDColorPickerField extends StatefulWidget {
 
   /// @no-doc
   final Color? initialColor;
+
+  /// @no-doc
+  final String? label;
 
   /// @no-doc
   final List<Color> predefinedColors;
@@ -50,7 +54,7 @@ class _FDColorPickerFieldState extends State<FDColorPickerField> {
   Widget build(BuildContext context) {
     return FDInputField(
       key: Key('fd-color-picker-field-${widget.id}'),
-      label: 'Color',
+      label: widget.label ?? 'Color',
       child: FDInlineColorPicker(
         selectedColor: _selectedColor,
         predefinedColors: widget.predefinedColors,
