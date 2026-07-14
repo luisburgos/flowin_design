@@ -1,6 +1,5 @@
 import 'package:flowin_design/src/foundations/foundations.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// @no-doc
 class FlowinTypefaces {
@@ -9,16 +8,18 @@ class FlowinTypefaces {
 
   /// @no-doc
   static TextTheme baseline() {
-    return GoogleFonts.interTextTheme().copyWith(
-      headlineSmall: FlowinBaselineTextTokens.headlineSmall,
-      titleMedium: FlowinBaselineTextTokens.titleMedium,
-      titleSmall: FlowinBaselineTextTokens.titleSmall,
-      bodyLarge: FlowinBaselineTextTokens.bodyLarge,
-      bodyMedium: FlowinBaselineTextTokens.bodyMedium,
-      labelLarge: FlowinBaselineTextTokens.labelLarge,
-      labelMedium: FlowinBaselineTextTokens.labelMedium,
-      labelSmall: FlowinBaselineTextTokens.labelSmall,
-    );
+    return Typography.material2021(platform: TargetPlatform.iOS).black
+        .apply(fontFamily: interFontFamily)
+        .copyWith(
+          headlineSmall: FlowinBaselineTextTokens.headlineSmall,
+          titleMedium: FlowinBaselineTextTokens.titleMedium,
+          titleSmall: FlowinBaselineTextTokens.titleSmall,
+          bodyLarge: FlowinBaselineTextTokens.bodyLarge,
+          bodyMedium: FlowinBaselineTextTokens.bodyMedium,
+          labelLarge: FlowinBaselineTextTokens.labelLarge,
+          labelMedium: FlowinBaselineTextTokens.labelMedium,
+          labelSmall: FlowinBaselineTextTokens.labelSmall,
+        );
   }
 }
 

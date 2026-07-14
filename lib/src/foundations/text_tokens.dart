@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+/// @no-doc
+const interFontFamily = 'Inter';
 
 /// A typography class that defines all Flowin text tokens
 /// using Inter as the base font.
 class FlowinBaselineTextTokens {
   /// @no-doc
-  static TextStyle get headlineSmall => GoogleFonts.inter(
+  static TextStyle get headlineSmall => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 24,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 32 / 24,
@@ -13,7 +16,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get titleLarge => GoogleFonts.inter(
+  static TextStyle get titleLarge => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 20,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 24 / 20,
@@ -21,7 +25,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get titleMedium => GoogleFonts.inter(
+  static TextStyle get titleMedium => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 16,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 22 / 16,
@@ -29,7 +34,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get titleSmall => GoogleFonts.inter(
+  static TextStyle get titleSmall => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 14,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 20 / 14,
@@ -37,7 +43,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get bodyLarge => GoogleFonts.inter(
+  static TextStyle get bodyLarge => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 16,
     fontWeight: FontWeight.w400, // Regular
     height: 24 / 16,
@@ -45,7 +52,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get bodyMedium => GoogleFonts.inter(
+  static TextStyle get bodyMedium => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 14,
     fontWeight: FontWeight.w400, // Regular
     height: 22 / 14,
@@ -53,7 +61,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get labelLarge => GoogleFonts.inter(
+  static TextStyle get labelLarge => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 16,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 16 / 16,
@@ -61,7 +70,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get labelMedium => GoogleFonts.inter(
+  static TextStyle get labelMedium => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 14,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 14 / 14,
@@ -69,7 +79,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get labelSmall => GoogleFonts.inter(
+  static TextStyle get labelSmall => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 12,
     fontWeight: FontWeight.w600, // Semi Bold
     height: 12 / 12,
@@ -77,7 +88,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get captionLarge => GoogleFonts.inter(
+  static TextStyle get captionLarge => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 12,
     fontWeight: FontWeight.w500, // Medium
     height: 20 / 12,
@@ -85,7 +97,8 @@ class FlowinBaselineTextTokens {
   );
 
   /// @no-doc
-  static TextStyle get captionMedium => GoogleFonts.inter(
+  static TextStyle get captionMedium => const TextStyle(
+    fontFamily: interFontFamily,
     fontSize: 10,
     fontWeight: FontWeight.w400, // Regular
     height: 16 / 10,
