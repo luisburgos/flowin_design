@@ -1,4 +1,5 @@
 import 'package:flowin_design/src/foundations/foundations.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// @no-doc
@@ -8,7 +9,7 @@ class FlowinTypefaces {
 
   /// @no-doc
   static TextTheme baseline() {
-    return Typography.material2021(platform: TargetPlatform.iOS).black
+    return Typography.material2021(platform: defaultTargetPlatform).black
         .apply(fontFamily: interFontFamily)
         .copyWith(
           headlineSmall: FlowinBaselineTextTokens.headlineSmall,
