@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
-/// @no-doc
-const interFontFamily = 'Inter';
+/// The Inter family as registered by the Flutter asset bundle.
+///
+/// Fonts declared by a package are namespaced `packages/<package>/<family>`.
+/// Referencing the bare family name resolves to nothing and silently falls
+/// back to the platform font — San Francisco on iOS, Roboto on Android — which
+/// looks close enough to Inter on iOS to pass unnoticed.
+const interFontFamily = 'packages/flowin_design/Inter';
 
 /// A typography class that defines all Flowin text tokens
 /// using Inter as the base font.
@@ -106,8 +111,11 @@ class FlowinBaselineTextTokens {
   );
 }
 
-/// @no-doc
-const supremeFontFamily = 'Supreme';
+/// The Supreme family as registered by the Flutter asset bundle.
+///
+/// Package-declared fonts are namespaced `packages/<package>/<family>`; see
+/// [interFontFamily].
+const supremeFontFamily = 'packages/flowin_design/Supreme';
 
 /// A typography class for Flowin’s brand text tokens using the custom
 /// `Supreme` font (added via pubspec.yaml).
